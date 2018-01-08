@@ -28,7 +28,7 @@ The following BNF describes the supported syntax for tasks:
 ```BNF
 <task_section> ::= 'tasks { ' <tasks> ' }'
 <tasks> ::= <task> [<tasks>]
-<task> ::= <name> ' { type = ' <task_type> [<key_values>] [<datasource_section>] '}'
+<task> ::= <name> ' { type = "' <text> '"' [<key_values>] [<datasource_section>] '}'
 
 <datasource_section> ::= 'dataSource { ' <datasource> ' }'
 ```
