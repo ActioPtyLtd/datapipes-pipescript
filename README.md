@@ -46,6 +46,27 @@ The following BNF describes the supported syntax for tasks:
 
 ```
 
+```BNF
+<expression> ::= 
+  <literal> | 
+  <variable> | 
+  <select> | 
+  <apply> | 
+  <user_function> | 
+  <operator_expression> | 
+  <if_statement>
+
+<literal> ::= numeric | ('"' <text> '"')
+<variable> ::= <name>
+<apply> ::= <name> '()'
+<user_function> ::= <name> '(' <args> ')'
+<args> ::= <expression> [',' <expression>]
+<select> ::= <expression> '.' (<variable> | <apply>)
+<operator_expression> ::= <expression> <operator> <expression>
+<operator> ::= '+' | '-' | '*' | '/' | '&&' | '||' | '<' | '>' | '<=' | '>='
+<if_statement> ::= 'if(' <expression> ')' ['elseif(' <expression> ')'] 'else' <expression>
+```
+
 ## Config - Pipeline Section
 ```BNF
 <pipelines_section> ::= 'pipelines { ' <pipelines> ' }'
