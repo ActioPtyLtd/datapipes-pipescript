@@ -11,7 +11,7 @@ PipeScript is captured in the HOCON format and is composed of the following sect
 3. Services - allows for pipeline operations to be exposed as RESTful endpoints
 4. Startup - defines which pipeline to execute by default
 
-## Config
+## Config - Sections
 The following BNF form of PipeScript&reg; is captured below:
 
 ```BNF
@@ -19,33 +19,49 @@ The following BNF form of PipeScript&reg; is captured below:
 
 <sections> ::= <task_section> [<pipelines_section>] [<services_section>] <startup>
 
+```
+
+## Config - Task Section
+
+```BNF
 <task_section> ::= 'tasks { ' <tasks> ' }'
 <tasks> ::= <task> ['\n' <tasks>]
-<task> ::= <name> ' { ' <task_type> ' }'
-<task_type> ::= <task_extract> | <task_transformTerm> | <task_load>
+<task> ::= <name> ' { type = ' <task_type> ['\n' <key_values>] ['\n' <datasource_section>] '}'
 
+<datasource_section> ::= 
+
+```
+
+## Config - Pipeline Section
+```BNF
 <pipelines_section> ::= 'pipelines { ' <pipelines> ' }'
 <pipelines> ::= <pipeline> ['\n' <pipelines>]
 <pipeline> ::= <name> ' { pipe = "' <pipeline_expression> '" }'
-<pipeline_expression> ::= 
+<pipeline_expression> ::= <name> ['(' <args> ')'] [<pipeline_operator> <pipeline_expression>]
+<pipeline_operator> ::= ('|' | '&')
+```
 
+## Config - Services Section
+```BNF
 <services_section> ::= 'services = [ ' <services> ' ]'
 <services> ::= <service> [',\n' <services>]
 <service> ::= '{ path =  "' <url> '" \n' <service_methods> ' }'
 <service_methods> ::= <service_method> ['\n' <service_methods>]
 <service_method> ::= ('get' | 'put' | 'post' | 'patch' | 'delete') ' = ' <name>
-
+```
+## Config - Common
+```BNF
 
 <startup> ::= 'startup { exec = ' <name> ' }'
 
-<name> ::= 
-<url> ::= 
-<task_extract> ::= 
-<task_transformTerm> ::=
-<task_load> ::=
+<key_values> ::= <name>
+<name> ::= ;alphanumeric text
+<value> := ;text or number
+<args> ::= <name>
+
+<url> ::= ;text with optional variables
 
 ```
-
 
 
 ## Tasks
