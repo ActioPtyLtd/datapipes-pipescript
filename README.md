@@ -29,8 +29,41 @@ The following BNF describes the supported syntax for tasks:
 <task_section> ::= 'tasks { ' <tasks> ' }'
 <tasks> ::= <task> [<tasks>]
 <task> ::= <name> ' { type = "' <text> '"' [<key_values>] [<datasource_section>] '}'
-
 ```
+
+The following Task types supported are explained below:
+
+### Task Extract
+To extract data from a data source, you will need the following definition:
+```
+type = extract
+dataSource {
+  ...
+  query {
+    read {
+      ...
+    }
+  }
+}
+```
+
+### Task Load
+To load data into a data source, you will need the following definition:
+```
+type = load
+dataSource {
+  ...
+  query {
+    create {
+      ...
+    }
+  }
+}
+```
+
+### Task TransformTerm
+
+
 
 ## Config - DataSources Section
 ```BNF
@@ -57,7 +90,7 @@ The following BNF describes the supported syntax for tasks:
   <operator_expression> | 
   <if_statement>
 
-<literal> ::= numeric | ('"' <text> '"') | 'false' | 'true'
+<literal> ::= <number> | ('"' <text> '"') | 'false' | 'true'
 <variable> ::= <name>
 <apply> ::= <name> '()'
 <user_function> ::= <name> '(' <args> ')'
