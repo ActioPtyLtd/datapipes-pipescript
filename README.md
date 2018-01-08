@@ -6,35 +6,13 @@ This is a Draft Specification for PipeScript&reg;, a DSL (domain specific langua
 
 PipeScript is captured in the HOCON format and is composed of the following sections:
 
-* Tasks
-* Pipelines
-* Services
-* Startup
-
-These sections will need to be specified under the *script* label:
-
-```HOCON
-script {
-  tasks {
-    ...
-  }
-  
-  pipelines {
-    ...
-  }
-   
-  services {
-    ...
-  }
-
-  startup {
-    ...
-  }
-}
-
-```
+1. Tasks - defines operations to be performed using the incoming DOM
+2. Pipelines - defines flow control of DOMs between Tasks
+3. Services - allows for pipeline operations to be exposed as RESTful endpoints
+4. Startup - defines which pipeline to execute by default
 
 ## Config
+The following BNF form of PipeScript&reg; is captured below:
 
 ```BNF
 <script> ::= 'script {' <sections> '}'
@@ -49,7 +27,7 @@ script {
 <pipelines_section> ::= 'pipelines { ' <pipelines> ' }'
 <pipelines> ::= <pipeline> ['\n' <pipelines>]
 <pipeline> ::= <name> ' { pipe = "' <pipeline_expression> '" }'
-pipeline_expression ::= 
+<pipeline_expression> ::= 
 
 <services_section> ::= 'services = [ ' <services> ' ]'
 <services> ::= <service> [',\n' <services>]
@@ -61,6 +39,7 @@ pipeline_expression ::=
 <startup> ::= 'startup { exec = ' <name> ' }'
 
 <name> ::= 
+<url> ::= 
 <task_extract> ::= 
 <task_transformTerm> ::=
 <task_load> ::=
