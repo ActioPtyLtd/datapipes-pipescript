@@ -36,6 +36,7 @@ script {
 
 ## Config
 
+```BNF
 <script> ::= script "{" <sections> "}"
 
 <sections> ::= <task_section> [<pipelines_section>] [<services_section>] <startup>
@@ -54,6 +55,8 @@ script {
 <service> ::= 
 
 <startup> ::= "startup { exec = " <task> | <pipeline> " }"
+
+```
 
 
 
