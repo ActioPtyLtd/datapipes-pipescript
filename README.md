@@ -46,6 +46,7 @@ The following BNF describes the supported syntax for tasks:
 
 ```
 
+## Config - Expressions
 ```BNF
 <expression> ::= 
   <literal> | 
