@@ -34,6 +34,32 @@ script {
 
 ```
 
+## Config
+
+```BNF
+<script> ::= script "{" <sections> "}"
+
+<sections> ::= <task_section> [<pipelines_section>] [<services_section>] <startup>
+
+<task_section> ::= "tasks { " <tasks> " }"
+<tasks> ::= <task> [<tasks>]
+<task> ::= <name> " { " <task_type> " }"
+<task_type> ::= <task_extract> | <task_transformTerm> | <task_load>
+
+<pipelines_section> ::= "pipelines { " <pipelines> " }"
+<pipelines> ::= <pipeline> [<pipelines>]
+<pipeline> ::=
+
+<services_section> ::= "services { " <services> " }"
+<services> ::= <service> [<services>]
+<service> ::= 
+
+<startup> ::= "startup { exec = " <task> | <pipeline> " }"
+
+```
+
+
+
 ## Tasks
 
 Tasks can be identified by name and live under the tasks section of the configuration. Each task should have a task type defined which indicates what function it has. Generally, if a task supports different behaviors it will have a behavior defined. For Extractors and Loaders, tasks will require a Data Source to be defined.
@@ -84,3 +110,4 @@ read_user_api {
   }
 }
 ```
+
