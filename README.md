@@ -64,7 +64,7 @@ The following BNF describes the supported syntax for tasks:
 <args> ::= <expression> [',' <expression>]
 <select> ::= <expression> '.' (<variable> | <apply>)
 <operator_expression> ::= <expression> <operator> <expression>
-<operator> ::= '+' | '-' | '*' | '/' | '&&' | '||' | '<' | '>' | '<=' | '>='
+<operator> ::= '+' | '-' | '*' | '/' | '&&' | '||' | '<' | '>' | '<=' | '>=' | '->'
 <if_statement> ::= 'if(' <expression> ')' ['elseif(' <expression> ')'] 'else' <expression>
 ```
 
