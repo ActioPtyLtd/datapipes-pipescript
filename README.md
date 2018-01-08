@@ -37,7 +37,7 @@ script {
 ## Config
 
 ```BNF
-<script> ::= script "{" <sections> "}"
+*<script>* ::= script "{" <sections> "}"
 
 <sections> ::= <task_section> [<pipelines_section>] [<services_section>] <startup>
 
