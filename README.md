@@ -62,7 +62,11 @@ dataSource {
 ```
 
 ### Task TransformTerm
-
+```
+type = transformTerm
+behavior = ('batch' | 'expand')
+term = '"' <expression> '"'
+```
 
 
 ## Config - DataSources Section
