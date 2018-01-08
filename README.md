@@ -30,13 +30,12 @@ The following BNF describes the supported syntax for tasks:
 <tasks> ::= <task> [<tasks>]
 <task> ::= <name> ' { type = "' <text> '"' [<key_values>] [<datasource_section>] '}'
 
-<datasource_section> ::= 'dataSource { ' <datasource> ' }'
 ```
 
 ## Config - DataSources Section
 ```BNF
 <datasource_section> ::= 'dataSource { ' <datasource> ' }'
-<datasource> ::= 'type = "' <text> '" [<key_values>] [query_section]
+<datasource> ::= 'type = "' <text> '"' [<key_values>] [query_section]
 
 <query_section> ::= 'query {' <datasource_queries> '}'
 <datasource_queries> ::= <datasource_query> [<datasource_queries>]
