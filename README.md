@@ -22,20 +22,35 @@ The following BNF form of PipeScript&reg; is captured below:
 ```
 
 ## Config - Task Section
+Tasks can be identified by name and live under the tasks section of the configuration. Each task should have a task type defined which indicates what function it has. Generally, if a task supports different behaviors it will have a behavior defined. For Extractors and Loaders, tasks will require a Data Source to be defined.
 
+The following BNF describes the supported syntax for tasks:
 ```BNF
 <task_section> ::= 'tasks { ' <tasks> ' }'
-<tasks> ::= <task> ['\n' <tasks>]
-<task> ::= <name> ' { type = ' <task_type> ['\n' <key_values>] ['\n' <datasource_section>] '}'
+<tasks> ::= <task> [<tasks>]
+<task> ::= <name> ' { type = ' <task_type> [<key_values>] [<datasource_section>] '}'
 
-<datasource_section> ::= 
+<datasource_section> ::= 'dataSource { ' <datasource> ' }'
+```
+
+## Config - DataSources Section
+```BNF
+<datasource_section> ::= 'dataSource { ' <datasource> ' }'
+<datasource> ::= 'type = "' <text> '" [<key_values>] [query_section]
+
+<query_section> ::= 'query {' <datasource_queries> '}'
+<datasource_queries> ::= <datasource_query> [<datasource_queries>]
+<datasource_query> ::= <name> ' {' <templates> '}'
+
+<templates> ::= <name> ' = "' <template> '"' [<templates>] 
+<template> ::= <text> [('$'<expression> | '${'<expression>'}')] <template>
 
 ```
 
 ## Config - Pipeline Section
 ```BNF
 <pipelines_section> ::= 'pipelines { ' <pipelines> ' }'
-<pipelines> ::= <pipeline> ['\n' <pipelines>]
+<pipelines> ::= <pipeline> [<pipelines>]
 <pipeline> ::= <name> ' { pipe = "' <pipeline_expression> '" }'
 <pipeline_expression> ::= <name> ['(' <args> ')'] [<pipeline_operator> <pipeline_expression>]
 <pipeline_operator> ::= ('|' | '&')
@@ -44,11 +59,12 @@ The following BNF form of PipeScript&reg; is captured below:
 ## Config - Services Section
 ```BNF
 <services_section> ::= 'services = [ ' <services> ' ]'
-<services> ::= <service> [',\n' <services>]
-<service> ::= '{ path =  "' <url> '" \n' <service_methods> ' }'
-<service_methods> ::= <service_method> ['\n' <service_methods>]
+<services> ::= <service> [',' <services>]
+<service> ::= '{ path =  "' <url> '"' <service_methods> ' }'
+<service_methods> ::= <service_method> [<service_methods>]
 <service_method> ::= ('get' | 'put' | 'post' | 'patch' | 'delete') ' = ' <name>
 ```
+
 ## Config - Common
 ```BNF
 
