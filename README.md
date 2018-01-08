@@ -37,24 +37,33 @@ script {
 ## Config
 
 ```BNF
-<script> ::= script "{" <sections> "}"
+<script> ::= 'script {' <sections> '}'
 
 <sections> ::= <task_section> [<pipelines_section>] [<services_section>] <startup>
 
-<task_section> ::= "tasks { " <tasks> " }"
-<tasks> ::= <task> [<tasks>]
-<task> ::= <name> " { " <task_type> " }"
+<task_section> ::= 'tasks { ' <tasks> ' }'
+<tasks> ::= <task> ['\n' <tasks>]
+<task> ::= <name> ' { ' <task_type> ' }'
 <task_type> ::= <task_extract> | <task_transformTerm> | <task_load>
 
-<pipelines_section> ::= "pipelines { " <pipelines> " }"
-<pipelines> ::= <pipeline> [<pipelines>]
-<pipeline> ::=
+<pipelines_section> ::= 'pipelines { ' <pipelines> ' }'
+<pipelines> ::= <pipeline> ['\n' <pipelines>]
+<pipeline> ::= <name> ' { pipe = "' <pipeline_expression> '" }'
+pipeline_expression ::= 
 
-<services_section> ::= "services { " <services> " }"
-<services> ::= <service> [<services>]
-<service> ::= 
+<services_section> ::= 'services = [ ' <services> ' ]'
+<services> ::= <service> [',\n' <services>]
+<service> ::= '{ path =  "' <url> '" \n' <service_methods> ' }'
+<service_methods> ::= <service_method> ['\n' <service_methods>]
+<service_method> ::= ('get' | 'put' | 'post' | 'patch' | 'delete') ' = ' <name>
 
-<startup> ::= "startup { exec = " <task> | <pipeline> " }"
+
+<startup> ::= 'startup { exec = ' <name> ' }'
+
+<name> ::= 
+<task_extract> ::= 
+<task_transformTerm> ::=
+<task_load> ::=
 
 ```
 
