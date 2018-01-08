@@ -68,6 +68,17 @@ behavior = ('batch' | 'expand')
 term = '"' <expression> '"'
 ```
 
+### Task MergeLoad
+```
+type = mergeLoad
+entity = <entity_name>
+keys = '[' <columns> ']'
+update = ('true' | 'false')
+
+dataSource {
+  ...
+}
+```
 
 ## Config - DataSources Section
 ```BNF
