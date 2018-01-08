@@ -34,3 +34,53 @@ script {
 
 ```
 
+## Tasks
+
+Tasks can be identified by name and live under the tasks section of the configuration. Each task should have a task type defined which indicates what function it has. Generally, if a task supports different behaviors it will have a behavior defined. For Extractors and Loaders, tasks will require a Data Source to be defined.
+
+Tasks are generally specified as follows:
+
+```HOCON
+<task name> {
+  type = <task type>
+  [behavior = <task behavior>]
+
+  [dataSource {
+    ...
+  }]
+}
+```
+
+Each task should appear in the tasks section:
+
+```HOCON
+script {
+  tasks {
+    t1 {
+      ...
+    }
+    t2 {
+      ...
+    }
+    ...
+  }
+}
+
+```
+
+An example task that extracts data from a RESTful DataSource is shown here:
+
+```HOCON
+read_user_api {
+  type = extract
+
+  dataSource = ${my_datasource}
+  dataSource {
+    query {
+      read {
+        uri = ${my_datasource.base_uri}"/v1/users"
+      }
+    }
+  }
+}
+```
