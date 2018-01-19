@@ -143,12 +143,12 @@ Example:
 services = [
   {
     path = "/api/v1/users"
-    get = "get_users"
+    get = get_users
   },
   {
     path = "/api/v1/user/$userid"
-    get = "get_user"
-    put = "update_user"
+    get = get_user
+    put = update_user
   }
 ]
 ```
