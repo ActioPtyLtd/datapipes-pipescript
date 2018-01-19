@@ -210,7 +210,7 @@ ds.isEmpty()
 
 ### DataSet Higher Order Functions
 
-Function f, generally specified as a lambda expression can be used as an input into the following higher order functions:
+Function f, generally specified as a lambda expression (x => f(x)) can be used as an input into the following higher order functions:
 
 Map with function f:
 ```javascript
