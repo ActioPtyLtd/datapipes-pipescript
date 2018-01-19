@@ -6,12 +6,12 @@ This is a Draft Specification for PipeScript&reg;, a DSL (domain specific langua
 
 PipeScript is captured in the HOCON format and is composed of the following sections:
 
-1. [Tasks](#config---task-section) - defines operations to be performed using the incoming DOM
-2. [Pipelines](#config---pipeline-section) - defines flow control of DOMs between Tasks
-3. [Services](#config---services-section) - allows for pipeline operations to be exposed as RESTful endpoints
-4. [Startup](#config---startup-section) - defines which pipeline to execute by default
+1. [Tasks](#task-section) - defines operations to be performed using the incoming DOM
+2. [Pipelines](#pipeline-section) - defines flow control of DOMs between Tasks
+3. [Services](#services-section) - allows for pipeline operations to be exposed as RESTful endpoints
+4. [Startup](#startup-section) - defines which pipeline to execute by default
 
-## Config - Sections
+## Sections
 The following BNF form of PipeScript&reg; is captured below:
 
 ```BNF
@@ -21,7 +21,7 @@ The following BNF form of PipeScript&reg; is captured below:
 
 ```
 
-## Config - Task Section
+## Task Section
 Tasks can be identified by name and live under the tasks section of the configuration. Each task should have a task type defined which indicates what function it has. Generally, if a task supports different behaviors it will have a behavior defined. For Extractors and Loaders, tasks will require a Data Source to be defined.
 
 The following BNF describes the supported syntax for tasks:
@@ -80,7 +80,7 @@ dataSource {
 }
 ```
 
-## Config - DataSources Section
+## DataSources Section
 ```BNF
 <datasource_section> ::= 'dataSource { ' <datasource> ' }'
 <datasource> ::= 'type = "' <text> '"' [<key_values>] [query_section]
@@ -94,7 +94,7 @@ dataSource {
 
 ```
 
-## Config - Expressions
+## Expressions
 ```BNF
 <expression> ::= 
   <literal> | 
@@ -116,7 +116,7 @@ dataSource {
 <if_statement> ::= 'if(' <expression> ')' ['elseif(' <expression> ')'] 'else' <expression>
 ```
 
-## Config - Pipeline Section
+## Pipeline Section
 ```BNF
 <pipelines_section> ::= 'pipelines { ' <pipelines> ' }'
 <pipelines> ::= <pipeline> [<pipelines>]
@@ -125,7 +125,7 @@ dataSource {
 <pipeline_operator> ::= ('|' | '&')
 ```
 
-## Config - Services Section
+## Services Section
 The Services Section allows one to define API endpoints and the appropriate routing that needs to occur for different http methods. The BNF form is shown below:
 
 ```BNF
@@ -156,7 +156,7 @@ services = [
 This configuration will provide access to two endpoints, one to extract users by calling the get_users pipeline and another that allows for a specific user to be retrieved or updated. Note the userid parameter will be extracted and passed onto either pipeline. For the update_user pipeline, the http request as well as the userid parameter will be provided.
 
 
-## Config - Startup Section
+## Startup Section
 The Startup Section allows one to specify the default pipeline to execute if no specific pipeline is specified on the command line. The BNF is as follows:
 
 ```BNF
@@ -165,7 +165,7 @@ The Startup Section allows one to specify the default pipeline to execute if no 
 
 Note: Here <name> is the default pipeline to execute.
 
-## Config - Common
+## Common
 ```BNF
 
 <startup> ::= 'startup { exec = ' <name> ' }'
