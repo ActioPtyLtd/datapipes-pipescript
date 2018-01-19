@@ -15,7 +15,7 @@ PipeScript is captured in the HOCON format and is composed of the following sect
 The following BNF form of PipeScript&reg; is captured below:
 
 ```BNF
-<script> ::= <span style="color:blue">'script {'</span> <sections> '}'
+<script> ::= 'script {' <sections> '}'
 
 <sections> ::= <task_section> [<pipelines_section>] [<services_section>] <startup>
 
