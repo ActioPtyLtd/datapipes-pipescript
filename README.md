@@ -126,6 +126,8 @@ dataSource {
 ```
 
 ## Config - Services Section
+The Services Section allows one to define API endpoints and the appropriate routing that needs to occur for different http methods. The BNF form is shown below:
+
 ```BNF
 <services_section> ::= 'services = [ ' <services> ' ]'
 <services> ::= <service> [',' <services>]
@@ -133,6 +135,35 @@ dataSource {
 <service_methods> ::= <service_method> [<service_methods>]
 <service_method> ::= ('get' | 'put' | 'post' | 'patch' | 'delete') ' = ' <name>
 ```
+Note <name> here is the name of the pipename to start if the spefific method is called.
+
+Example:
+
+```HOCON
+services = [
+  {
+    path = "/api/v1/users"
+    get = "get_users"
+  },
+  {
+    path = "/api/v1/user/$userid"
+    get = "get_user"
+    put = "update_user"
+  }
+]
+```
+
+This configuration will provide access to two endpoints, one to extract users by calling the get_users pipeline and another that allows for a specific user to be retrieved or updated. Note the userid parameter will be extracted and passed onto either pipeline. For the update_user pipeline, the http request as well as the userid parameter will be provided.
+
+
+## Config - Startup Section
+The Startup Section allows one to specify the default pipeline to execute if no specific pipeline is specified on the command line. The BNF is as follows:
+
+```BNF
+<startup> ::= 'startup { exec = ' <name> ' }'
+```
+
+Note: Here <name> is the default pipeline to execute.
 
 ## Config - Common
 ```BNF
@@ -148,55 +179,4 @@ dataSource {
 
 ```
 
-
-## Tasks
-
-Tasks can be identified by name and live under the tasks section of the configuration. Each task should have a task type defined which indicates what function it has. Generally, if a task supports different behaviors it will have a behavior defined. For Extractors and Loaders, tasks will require a Data Source to be defined.
-
-Tasks are generally specified as follows:
-
-```HOCON
-<task name> {
-  type = <task type>
-  [behavior = <task behavior>]
-
-  [dataSource {
-    ...
-  }]
-}
-```
-
-Each task should appear in the tasks section:
-
-```HOCON
-script {
-  tasks {
-    t1 {
-      ...
-    }
-    t2 {
-      ...
-    }
-    ...
-  }
-}
-
-```
-
-An example task that extracts data from a RESTful DataSource is shown here:
-
-```HOCON
-read_user_api {
-  type = extract
-
-  dataSource = ${my_datasource}
-  dataSource {
-    query {
-      read {
-        uri = ${my_datasource.base_uri}"/v1/users"
-      }
-    }
-  }
-}
-```
 
