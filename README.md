@@ -116,6 +116,35 @@ dataSource {
 <if_statement> ::= 'if(' <expression> ')' ['elseif(' <expression> ')'] 'else' <expression>
 ```
 
+### DataSet Functions
+The functions that every DataSet have, independant of its type, are listed below:
+
+Converting the DataSet to a String (named 'ds') can be with the following function:
+```javascript
+ds.toString()
+```
+
+Converting the DataSet to a String in JSON format can be with the following function:
+```javascript
+ds.toJson()
+
+```
+
+Converting the DataSet to a String in XML format can be with the following function:
+```javascript
+ds.toXml()
+```
+
+Checking whether a DataSet has a property value defined, returning a Bool, is as follows:
+```javascript
+ds.isDefined()
+```
+
+Checking whether a DataSet has child elements, returning a Bool, is as follows:
+```javascript
+ds.isEmpty()
+```
+
 ## Pipeline Section
 ```BNF
 <pipelines_section> ::= 'pipelines { ' <pipelines> ' }'
