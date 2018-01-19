@@ -7,9 +7,9 @@ This is a Draft Specification for PipeScript&reg;, a DSL (domain specific langua
 PipeScript is captured in the HOCON format and is composed of the following sections:
 
 1. [Tasks](#config---task-section) - defines operations to be performed using the incoming DOM
-2. Pipelines - defines flow control of DOMs between Tasks
-3. Services - allows for pipeline operations to be exposed as RESTful endpoints
-4. Startup - defines which pipeline to execute by default
+2. [Pipelines](#config---pipeline-section) - defines flow control of DOMs between Tasks
+3. [Services](#config---services-section) - allows for pipeline operations to be exposed as RESTful endpoints
+4. [Startup](#config---startup-section) - defines which pipeline to execute by default
 
 ## Config - Sections
 The following BNF form of PipeScript&reg; is captured below:
