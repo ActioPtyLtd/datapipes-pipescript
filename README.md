@@ -119,18 +119,18 @@ dataSource {
 ### DataSet Functions
 The functions that every DataSet have, independant of its type, are listed below:
 
-Converting the DataSet to a String (named 'ds') can be with the following function:
+Converting the DataSet to a String (named 'ds') can be done with the following function:
 ```javascript
 ds.toString()
 ```
 
-Converting the DataSet to a String in JSON format can be with the following function:
+Converting the DataSet to a String in JSON format can be done with the following function:
 ```javascript
 ds.toJson()
 
 ```
 
-Converting the DataSet to a String in XML format can be with the following function:
+Converting the DataSet to a String in XML format can be done with the following function:
 ```javascript
 ds.toXml()
 ```
