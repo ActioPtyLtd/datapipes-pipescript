@@ -183,28 +183,28 @@ Note: Here <name> is the default pipeline to execute.
 The functions that every DataSet has, independant of its type, are listed below:
 
 Converting the DataSet to a String (named 'ds') can be done with the following function:
-```scala
+```javascript
 ds.toString()
 ```
 
 Converting the DataSet to a String in JSON format can be done with the following function:
-```scala
+```javascript
 ds.toJson()
 
 ```
 
 Converting the DataSet to a String in XML format can be done with the following function:
-```scala
+```javascript
 ds.toXml()
 ```
 
 Checking whether a DataSet has a property value defined, returning a Bool, is as follows:
-```scala
+```javascript
 ds.isDefined()
 ```
 
 Checking whether a DataSet has child elements, returning a Bool, is as follows:
-```scala
+```javascript
 ds.isEmpty()
 ```
 
@@ -213,16 +213,16 @@ ds.isEmpty()
 Function f, generally specified as a lambda expression can be used as an input into the following higher order functions:
 
 Map with function f:
-```scala
+```javascript
 ds.map(f)
 ```
 
 FlatMap with function f:
-```scala
+```javascript
 ds.flatMap(f)
 ```
 
 Filter with function f:
-```scala
+```javascript
 ds.filter(f)
 ```
