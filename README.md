@@ -181,7 +181,7 @@ service {
 }
 ```
 
-This configuration will provide access to two endpoints on port 8080, one to extract users by calling the get_users pipeline and another that allows for a specific user to be retrieved or updated. Note the userid parameter will be extracted and passed onto either pipeline. For the update_user pipeline, the http request as well as the userid parameter will be provided.
+This configuration will provide access to two endpoints on port 8080, one to extract users by calling the get_users pipeline and another that allows for a specific user to be retrieved or updated. Note the *userid* parameter will be extracted and passed onto either pipeline. For the update_user pipeline, the http request as well as the *userid* parameter will be provided.
 
 To test the users endpoint, you can use curl as follows:
 ```
@@ -301,4 +301,10 @@ ds.find(a => f(a))
 Reduceleft with function *f*:
 ```javascript
 ds.reduceLeft((a,b) => f(a,b))
+```
+
+### Utility Functions
+
+```javascript
+toUpperCase(str: String)
 ```
