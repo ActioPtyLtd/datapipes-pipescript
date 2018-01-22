@@ -277,8 +277,8 @@ The functions that every DataSet has, independant of its type, are listed below:
 
 Return the name of the DataSet (named *ds*):
 ```javascript
-> ds.person.label()
-"person": String
+> ds.person.address.label()
+"address": String
 ```
 
 Convert a DataSet to a String:
@@ -291,14 +291,16 @@ Convert a DataSet to a String in JSON format and vise versa:
 ```javascript
 > ds.person.address.toJson()
 "{ \"addr1\": \"George St.\", \"addr2\": \"Sydney\", \"postcode\": 2000 }": String
-ds.parseJson()
+> ds.person.address.toJson().parseJson().addr1
+"George St.": String
 ```
 
 Convert the DataSet to a String in XML format and vise versa:
 ```javascript
 > ds.person.address.toXml()
 "<address><addr1>George St.</addr1><addr2>Sydney</addr2><postcode>2000</postcode></address>": String
-ds.parseXml()
+> ds.person.address.toXml().parseXml().addr1
+"George St.": String
 ```
 
 Check whether a DataSet has a property value defined, returns a Bool:
