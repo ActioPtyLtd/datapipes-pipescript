@@ -101,7 +101,7 @@ task_merge {
 }
 ```
 
-## DataSources Section
+## DataSource Section
 ```BNF
 <datasource_section> ::= 'dataSource { ' <datasource> ' }'
 <datasource> ::= 'type = "' <text> '"' [<key_values>] [query_section]
