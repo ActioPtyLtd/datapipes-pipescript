@@ -289,19 +289,26 @@ Convert a DataSet to a String:
 
 Convert a DataSet to a String in JSON format and vise versa:
 ```javascript
-ds.toJson()
+> ds.person.address.toJson()
+"{
+  "addr1": "George St.",
+  "addr2": "Sydney",
+  "postcode": 2000
+}": String
 ds.parseJson()
 ```
 
 Convert the DataSet to a String in XML format and vise versa:
 ```javascript
-ds.toXml()
-ds.parseJson()
+> ds.person.address.toXml()
+"<address><addr1>George St.</addr1><addr2>Sydney</addr2><postcode>2000</postcode></address>": String
+ds.parseXml()
 ```
 
 Check whether a DataSet has a property value defined, returns a Bool:
 ```javascript
-ds.isDefined()
+> ds.person.isDefined()
+true: Boolean
 ```
 
 Check whether a DataSet has child elements, returns a Bool:
