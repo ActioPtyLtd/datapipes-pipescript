@@ -65,9 +65,9 @@ task_transform {
 ```
 
 ### Task Assert
-To assert that the incoming DOM meets your criteria using an expression (using a task called *task_transform*), you will need the following definition:
+To assert that the incoming DOM meets your criteria using an expression (using a task called *task_assert*), you will need the following definition:
 ```
-task_transform {
+task_assert {
   type = assert
   term = '"' <expression> '"'
   message = '"' <text> '"'
