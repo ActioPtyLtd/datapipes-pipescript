@@ -263,13 +263,31 @@ These data structures can be thought of as json structures, such as the followin
 ```
 We will use this example DataSet (call it *ds*) to demonstrate the different type of expressions.
 
+### Literal
+Literals can be of type Numeric, String, Boolean:
+
+```javascript
+> 2000
+3000: Numeric
+> "text"
+"text": String
+> false
+false: Boolean
+```
+
 ### Selection
-Given a DataSet, dot notation allows one to access elements contained within the structure. 
+Given a DataSet, dot notation allows one to access elements contained within the structureby name. 
 
 To access the persons first name we can do the following:
 ```javascript
 > ds.person.firstName
 "John": String
+```
+
+To access elements using an index we can do the following:
+```javascript
+> ds.person.phoneNumbers(0)
+"98765432": String
 ```
 
 ### Functions
