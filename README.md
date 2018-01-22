@@ -66,13 +66,13 @@ task_extract {
     connect = "jdbc:postgresql://localhost/testDB?user=fred&password=secret&ssl=true"
     query {
       read {
-        sql = "select * from mytable where id = $id"
+        sql = "select * from invoices where amount >= $min_amount"
       }
     }
   }
 }
 ```
-This example Task produces data by connecting to a postgresql database and querying the SQL table *mytable*, filtering by the supplied *id* variable.
+This example Task produces data by connecting to a postgresql database and querying the SQL table *invoices*, filtering by the supplied *min_amount* variable.
 Jump to [DataSources](#datasource-section) to understand what type of DataSources the extract Task can use.
 
 ### Task Transform
