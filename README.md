@@ -299,7 +299,7 @@ ds.find(a => f(a))
 ```
 
 Reduceleft with function *f*:
-```javascript
+```scala
 ds.reduceLeft((a,b) => f(a,b))
 ```
 
