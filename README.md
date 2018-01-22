@@ -237,6 +237,41 @@ Note: Here *name* is the default pipeline to execute.
 <if_statement> ::= 'if(' <expression> ')' ['elseif(' <expression> ')'] 'else' <expression>
 ```
 
+All expressions evaluate to a DataSet. DataSets are hierarchical data structures. DataSets can be defined by the following data types: 
+
+![DataSet](http://yuml.me/diagram/scruffy;dir:TB/class/[<<DataSet>>]^[Record],%20[<<DataSet>>]^[Array],%20[Record]++-%20%20%20%20%20%20fields%20*[<<DataSet>>],%20[Array]++-%20%20%20%20%20%20items%20*[<<DataSet>>],%20[<<DataSet>>]^[String;Date;Numeric;Boolean;Empty])
+
+These data structures can be thought of as json structures, such as the following:
+
+```json
+{
+  "person": {
+    "firstName": "John",
+    "lastName": "Smith",
+    "address": {
+      "addr1": "George St.",
+      "addr2": "Sydney",
+      "postcode": 2000
+    },
+    "phoneNumbers": [
+      "98765432",
+      "87654321",
+      "76543212"
+    ]
+  }
+}
+```
+We will use this example DataSet (call it *ds*) to demonstrate the different type of expressions.
+
+### DataSet Selection
+Given a DataSet, dot notation allows one to access elements contained within the structure. 
+
+To access the persons first name we can do the following:
+```scala
+> ds.person.firstName
+"John"
+```
+
 ### DataSet Functions
 The functions that every DataSet has, independant of its type, are listed below:
 
@@ -337,21 +372,5 @@ def plusDays(date: Date, days: Int): Date
 
 ```
 
-### Selection
-Given a DataSet, dot notation allows one to access elements contained within the structure. 
 
-Example DataSet *ds*:
-```json
-{
-  "person": {
-    "firstName": "John",
-    "lastName": "Smith"
-  }
-}
-```
 
-To access the persons first name we can do the following:
-```scala
-> ds.person.firstName
-"John"
-```
