@@ -279,34 +279,42 @@ false: Boolean
 Given a DataSet, dot notation allows one to access elements contained within the structureby name. 
 
 To access the persons first name we can do the following:
-```javascript
+```scala
 > ds.person.firstName
 "John": String
 ```
 
 To access elements using an index we can do the following:
-```javascript
+```scala
 > ds.person.phoneNumbers(0)
 "98765432": String
+```
+
+### Conditional Statement
+One can use conditional statements to return different DataSets based on conditions:
+
+```scala
+> if(ds.person.address.postcode == 2000) "Sydney" else "Not Sydney"
+"Sydney": String
 ```
 
 ### Functions
 The functions that every DataSet has, independant of its type, are listed below:
 
 Return the name of the DataSet (named *ds*):
-```javascript
+```scala
 > ds.person.address.label()
 "address": String
 ```
 
 Convert a DataSet to a String:
-```javascript
+```scala
 > ds.person.address.postcode.toString()
 "2000": String
 ```
 
 Convert a DataSet to a String in JSON format and vise versa:
-```javascript
+```scala
 > ds.person.address.toJson()
 "{ \"addr1\": \"George St.\", \"addr2\": \"Sydney\", \"postcode\": 2000 }": String
 > ds.person.address.toJson().parseJson().addr1
@@ -314,7 +322,7 @@ Convert a DataSet to a String in JSON format and vise versa:
 ```
 
 Convert the DataSet to a String in XML format and vise versa:
-```javascript
+```scala
 > ds.person.address.toXml()
 "<address><addr1>George St.</addr1><addr2>Sydney</addr2><postcode>2000</postcode></address>": String
 > ds.person.address.toXml().parseXml().addr1
@@ -322,19 +330,19 @@ Convert the DataSet to a String in XML format and vise versa:
 ```
 
 Check whether a DataSet has a property value defined, returns a Bool:
-```javascript
+```scala
 > ds.person.isDefined()
 true: Boolean
 ```
 
 Check whether a DataSet has child elements, returns a Bool:
-```javascript
+```scala
 > ds.person.phoneNumbers.isEmpty()
 false: Boolean
 ```
 
 Flatten the child elements of a DataSet, returns a Array:
-```javascript
+```scala
 ds.flatten()
 ```
 
