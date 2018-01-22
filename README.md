@@ -154,25 +154,28 @@ The Services Section allows one to define API endpoints and the appropriate rout
 <service_methods> ::= <service_method> [<service_methods>]
 <service_method> ::= ('get' | 'put' | 'post' | 'patch' | 'delete') ' = ' <name>
 ```
-Note <name> here is the name of the pipename to start if the spefific method is called.
+Note *name* here is the name of the pipename to start if the spefific method is called.
 
 Example:
 
 ```HOCON
-services = [
-  {
-    path = "/api/v1/users"
-    get = get_users
-  },
-  {
-    path = "/api/v1/user/$userid"
-    get = get_user
-    put = update_user
-  }
-]
+service {
+  port = 8080
+  routes = [
+    {
+      path = "/api/v1/users"
+      get = get_users
+    },
+    {
+      path = "/api/v1/user/$userid"
+      get = get_user
+      put = update_user
+    }
+  ]
+}
 ```
 
-This configuration will provide access to two endpoints, one to extract users by calling the get_users pipeline and another that allows for a specific user to be retrieved or updated. Note the userid parameter will be extracted and passed onto either pipeline. For the update_user pipeline, the http request as well as the userid parameter will be provided.
+This configuration will provide access to two endpoints on port 8080, one to extract users by calling the get_users pipeline and another that allows for a specific user to be retrieved or updated. Note the userid parameter will be extracted and passed onto either pipeline. For the update_user pipeline, the http request as well as the userid parameter will be provided.
 
 
 ## Startup Section
