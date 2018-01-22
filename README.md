@@ -236,7 +236,7 @@ Note: Here <name> is the default pipeline to execute.
 ### DataSet Functions
 The functions that every DataSet has, independant of its type, are listed below:
 
-Return the name of the DataSet (named 'ds'):
+Return the name of the DataSet (named *ds*):
 ```javascript
 ds.label()
 ```
@@ -275,30 +275,30 @@ ds.flatten()
 
 ### DataSet Higher Order Functions
 
-Function f, generally specified as a lambda expression (x => f(x)) can be used as an input into the following higher order functions:
+Function *f*, generally specified as a lambda expression (x => f(x)) can be used as an input into the following higher order functions:
 
-Map with function f:
+Map with function *f*:
 ```javascript
 ds.map(a => f(a))
 ```
 
-FlatMap with function f:
+FlatMap with function *f*:
 ```javascript
 ds.flatMap(a => f(a))
 ```
 
-Filter with function f:
+Filter with function *f*:
 ```javascript
 ds.filter(a => f(a))
 ds.filterNot(a => f(a))
 ```
 
-Find an element with function f:
+Find an element with function *f*:
 ```javascript
 ds.find(a => f(a))
 ```
 
-Reduceleft with function f:
+Reduceleft with function *f*:
 ```javascript
 ds.reduceLeft((a,b) => f(a,b))
 ```
