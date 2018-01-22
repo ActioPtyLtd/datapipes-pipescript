@@ -18,7 +18,6 @@ The following BNF form of PipeScript&reg; is captured below:
 <script> ::= 'script {' <sections> '}'
 
 <sections> ::= <task_section> [<pipelines_section>] [<services_section>] <startup>
-
 ```
 
 ## Task Section
@@ -32,6 +31,12 @@ The following BNF describes the supported syntax for tasks:
 ```
 
 The following Task types supported are explained below:
+* Extract - extract data from a DataSource
+* Transform - transform data using an expression
+* Assert - validate the data
+* Load - create data in a DataSource
+* Merge - create or update a DataSource using a key
+
 
 ### Task Extract
 To extract data from a data source (using a task called *task_extract*), you will need the following definition:
@@ -42,22 +47,6 @@ task_extract {
     ...
     query {
       read {
-        ...
-      }
-    }
-  }
-}
-```
-
-### Task Load
-To load data into a data source (using a task called *task_load*), you will need the following definition:
-```
-task_load {
-  type = load
-  dataSource {
-    ...
-    query {
-      create {
         ...
       }
     }
@@ -85,7 +74,23 @@ task_transform {
 }
 ```
 
-### Task MergeLoad
+### Task Load
+To load data into a data source (using a task called *task_load*), you will need the following definition:
+```
+task_load {
+  type = load
+  dataSource {
+    ...
+    query {
+      create {
+        ...
+      }
+    }
+  }
+}
+```
+
+### Task Merge
 To merge and load data  into an entity using a set of keys (using a task called *task_merge*), you will need the following definition:
 ```
 task_merge {
