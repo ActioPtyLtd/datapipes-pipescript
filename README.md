@@ -36,12 +36,14 @@ The following Task types supported are explained below:
 ### Task Extract
 To extract data from a data source, you will need the following definition:
 ```
-type = extract
-dataSource {
-  ...
-  query {
-    read {
-      ...
+... {
+  type = extract
+  dataSource {
+    ...
+    query {
+      read {
+        ...
+      }
     }
   }
 }
@@ -61,11 +63,18 @@ dataSource {
 }
 ```
 
-### Task TransformTerm
+### Task Transform
 ```
 type = transformTerm
 behavior = ('batch' | 'expand')
 term = '"' <expression> '"'
+```
+
+### Task Assert
+```
+type = assert
+term = '"' <expression> '"'
+message = '"' <text> '"'
 ```
 
 ### Task MergeLoad
@@ -182,30 +191,41 @@ Note: Here <name> is the default pipeline to execute.
 ### DataSet Functions
 The functions that every DataSet has, independant of its type, are listed below:
 
-Converting the DataSet to a String (named 'ds') can be done with the following function:
+Return the name of the DataSet (named 'ds'):
+```javascript
+ds.label()
+```
+
+Convert a DataSet to a String:
 ```javascript
 ds.toString()
 ```
 
-Converting the DataSet to a String in JSON format can be done with the following function:
+Convert a DataSet to a String in JSON format and vise versa:
 ```javascript
 ds.toJson()
-
+ds.parseJson()
 ```
 
-Converting the DataSet to a String in XML format can be done with the following function:
+Convert the DataSet to a String in XML format and vise versa:
 ```javascript
 ds.toXml()
+ds.parseJson()
 ```
 
-Checking whether a DataSet has a property value defined, returning a Bool, is as follows:
+Check whether a DataSet has a property value defined, returns a Bool:
 ```javascript
 ds.isDefined()
 ```
 
-Checking whether a DataSet has child elements, returning a Bool, is as follows:
+Check whether a DataSet has child elements, returns a Bool:
 ```javascript
 ds.isEmpty()
+```
+
+Flatten the child elements of a DataSet, returns a Array:
+```javascript
+ds.flatten()
 ```
 
 ### DataSet Higher Order Functions
@@ -214,15 +234,26 @@ Function f, generally specified as a lambda expression (x => f(x)) can be used a
 
 Map with function f:
 ```javascript
-ds.map(f)
+ds.map(a => f(a))
 ```
 
 FlatMap with function f:
 ```javascript
-ds.flatMap(f)
+ds.flatMap(a => f(a))
 ```
 
 Filter with function f:
 ```javascript
-ds.filter(f)
+ds.filter(a => f(a))
+ds.filterNot(a => f(a))
+```
+
+Find an element with function f:
+```javascript
+ds.find(a => f(a))
+```
+
+Reduceleft with function f:
+```javascript
+ds.reduceLeft((a,b) => f(a,b))
 ```
