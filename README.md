@@ -269,7 +269,7 @@ Given a DataSet, dot notation allows one to access elements contained within the
 To access the persons first name we can do the following:
 ```javascript
 > ds.person.firstName
-"John"
+"John": String
 ```
 
 ### Functions
@@ -278,12 +278,13 @@ The functions that every DataSet has, independant of its type, are listed below:
 Return the name of the DataSet (named *ds*):
 ```javascript
 > ds.person.label()
-"person"
+"person": String
 ```
 
 Convert a DataSet to a String:
 ```javascript
-ds.toString()
+> ds.person.address.postcode.toString()
+"2000": String
 ```
 
 Convert a DataSet to a String in JSON format and vise versa:
@@ -305,7 +306,8 @@ ds.isDefined()
 
 Check whether a DataSet has child elements, returns a Bool:
 ```javascript
-ds.isEmpty()
+> ds.person.phoneNumbers.isEmpty()
+false: Boolean
 ```
 
 Flatten the child elements of a DataSet, returns a Array:
