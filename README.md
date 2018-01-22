@@ -336,3 +336,22 @@ def dateParse(dateStr: String, formatIn: String, default: String): Date
 def plusDays(date: Date, days: Int): Date
 
 ```
+
+### Selection
+Given a DataSet, dot notation allows one to access elements contained within the structure. 
+
+Example:
+```json
+{
+  "person": {
+    "firstName": "John",
+    "lastName": "Smith"
+  }
+}
+```
+
+To access the persons first name we can do the following:
+```scala
+> person.firstName
+"John"
+```
