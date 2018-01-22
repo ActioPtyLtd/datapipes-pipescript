@@ -160,7 +160,7 @@ The Services Section allows one to define API endpoints and the appropriate rout
 <route_methods> ::= <route_method> [<route_methods>]
 <route_method> ::= ('get' | 'put' | 'post' | 'patch' | 'delete') ' = ' <name>
 ```
-Note *name* here is the name of the pipename to start if the spefific method is called.
+Note: *name* here is the name of the pipeline to start if the spefific method is called.
 
 Example:
 
@@ -195,7 +195,7 @@ The Startup Section allows one to specify the default pipeline to execute if no 
 <startup> ::= 'startup { exec = ' <name> ' }'
 ```
 
-Note: Here <name> is the default pipeline to execute.
+Note: Here *name* is the default pipeline to execute.
 
 ## Common
 ```BNF
