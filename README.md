@@ -4,7 +4,7 @@ This is a Draft Specification for PipeScript&reg;, a DSL (domain specific langua
 
 ## Introduction
 
-PipeScript is captured in the HOCON format and is composed of the following sections:
+PipeScript is captured in the [HOCON](https://github.com/lightbend/config) format and is composed of the following sections:
 
 1. [Tasks](#task-section) - defines operations to be performed using the incoming DOM
 2. [DataSources](#datasource-section) - defines how to connect and communicate with a source
@@ -268,7 +268,7 @@ Literals can be of type Numeric, String, Boolean:
 
 ```javascript
 > 2000
-3000: Numeric
+2000: Numeric
 > "text"
 "text": String
 > false
