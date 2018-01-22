@@ -54,6 +54,28 @@ task_extract {
 }
 ```
 
+The Task will execute the *read* query against the defined DataSource for each item in the incoming DOMs (successful) DataSet. Each of the items (also DataSets) will be in scope in any expressions used in the query part. The task produces DOMs extracted from the DataSource.
+
+Refer to [Expressions](#expressions) if needed.
+
+Example:
+
+```HOCON
+task_extract {
+  type = extract
+  dataSource {
+    type = jdbc
+    connect = "jdbc:postgresql://localhost/testDB?user=fred&password=secret&ssl=true"
+    query {
+      read {
+        sql = "select * from mytable"
+      }
+    }
+  }
+}
+```
+This example Task produces data by connecting to a postgresql database and querying all of rows in the SQL table *mytable*.
+
 ### Task Transform
 To transform data using an expression (using a task called *task_transform*), you will need the following definition:
 ```
@@ -64,7 +86,7 @@ task_transform {
 }
 ```
 
-Refer to [Expressions](#expressions) to get a better understanding of what is possible.
+Refer to [Expressions](#expressions) if needed.
 
 ### Task Assert
 To assert that the incoming DOM meets your criteria using an expression (using a task called *task_assert*), you will need the following definition:
