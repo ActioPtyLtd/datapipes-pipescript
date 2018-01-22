@@ -133,10 +133,9 @@ To demonstrate the Pipe operator, take the following two tasks T1 and T2 as an e
 ```
 T1 | T2
 ```
+![Pipe Operator](http://yuml.me/diagram/activity/(start)1->(T1)2->(T2))
 
-For every DOM T1 receives, it will execute its task on the DOM and potentially produce further DOMs which T2 will consume in similar fashion.
-
-(start)->(T1)-1>(T2)-2>(end)
+For every DOM T1 receives (1), it will execute its task on the DOM and potentially produce further DOMs which T2 will consume in similar fashion (2).
 
 ### The Ampersand Operator (&)
 To demonstrate the Ampersand operator, take the following two tasks T1 and T2 as an example:
@@ -146,7 +145,7 @@ T1 & T2
 
 ![Ampersand Operator](http://yuml.me/diagram/activity/(start)1->(T1)2->(start)3->(T2))
 
-For every DOM T1 consumes (1), allow for T1 to produce **all** its DOM's and complete (2) its operation entirely before sending the same DOM to T2 (3).
+For every DOM T1 consumes (1), allow for T1 to produce **all** its DOM's and complete (2) its operation entirely before allowing T2 to consume the same DOM (3).
 
 
 ## Services Section
