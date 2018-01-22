@@ -34,9 +34,9 @@ The following BNF describes the supported syntax for tasks:
 The following Task types supported are explained below:
 
 ### Task Extract
-To extract data from a data source, you will need the following definition:
+To extract data from a data source using a Task named task_extract, you will need the following definition:
 ```
-... {
+task_extract {
   type = extract
   dataSource {
     ...
