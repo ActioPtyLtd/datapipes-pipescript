@@ -34,9 +34,9 @@ The following BNF describes the supported syntax for tasks:
 The following Task types supported are explained below:
 
 ### Task Extract
-Let's define a Task named *task_extract* that will extract data from a data source. You will need the following definition:
+To extract data from a data source (using a task called *task_extract*), you will need the following definition:
 ```HOCON
-*task_extract* {
+task_extract {
   type = extract
   dataSource {
     ...
