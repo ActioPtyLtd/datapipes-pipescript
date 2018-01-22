@@ -263,21 +263,22 @@ These data structures can be thought of as json structures, such as the followin
 ```
 We will use this example DataSet (call it *ds*) to demonstrate the different type of expressions.
 
-### DataSet Selection
+### Selection
 Given a DataSet, dot notation allows one to access elements contained within the structure. 
 
 To access the persons first name we can do the following:
-```scala
+```javascript
 > ds.person.firstName
 "John"
 ```
 
-### DataSet Functions
+### Functions
 The functions that every DataSet has, independant of its type, are listed below:
 
 Return the name of the DataSet (named *ds*):
 ```javascript
-ds.label()
+> ds.person.label()
+"person"
 ```
 
 Convert a DataSet to a String:
@@ -312,7 +313,7 @@ Flatten the child elements of a DataSet, returns a Array:
 ds.flatten()
 ```
 
-### DataSet Higher Order Functions
+### Higher Order Functions
 
 Function *f*, generally specified as a lambda expression (x => f(x)) can be used as an input into the following higher order functions:
 
