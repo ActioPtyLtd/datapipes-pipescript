@@ -7,6 +7,7 @@ This is a Draft Specification for PipeScript&reg;, a DSL (domain specific langua
 PipeScript is captured in the HOCON format and is composed of the following sections:
 
 1. [Tasks](#task-section) - defines operations to be performed using the incoming DOM
+2. [DataSources](#datasource-section) - defines how to connect and communicate with a source
 2. [Pipelines](#pipeline-section) - defines flow control of DOMs between Tasks
 3. [Services](#services-section) - allows for pipeline operations to be exposed as RESTful endpoints
 4. [Startup](#startup-section) - defines which pipeline to execute by default
@@ -36,7 +37,7 @@ The following Task types supported are explained below:
 ### Task Extract
 To extract data from a data source (using a task called *task_extract*), you will need the following definition:
 ```HOCON
-<pre><b>task_extract</b></pre> {
+task_extract {
   type = extract
   dataSource {
     ...
@@ -50,42 +51,53 @@ To extract data from a data source (using a task called *task_extract*), you wil
 ```
 
 ### Task Load
-To load data into a data source, you will need the following definition:
+To load data into a data source (using a task called *task_load*), you will need the following definition:
 ```
-type = load
-dataSource {
-  ...
-  query {
-    create {
-      ...
+task_load {
+  type = load
+  dataSource {
+    ...
+    query {
+      create {
+        ...
+      }
     }
   }
 }
 ```
 
 ### Task Transform
+To transform data using an expression (using a task called *task_transform*), you will need the following definition:
 ```
-type = transformTerm
-behavior = ('batch' | 'expand')
-term = '"' <expression> '"'
+task_transform {
+  type = transformTerm
+  behavior = ('batch' | 'expand')
+  term = '"' <expression> '"'
+}
 ```
 
 ### Task Assert
+To assert that the incoming DOM meets your criteria using an expression (using a task called *task_transform*), you will need the following definition:
 ```
-type = assert
-term = '"' <expression> '"'
-message = '"' <text> '"'
+task_transform {
+  type = assert
+  term = '"' <expression> '"'
+  message = '"' <text> '"'
+}
 ```
 
 ### Task MergeLoad
+To merge and load data  into an entity using a set of keys (using a task called *task_merge*), you will need the following definition:
 ```
-type = mergeLoad
-entity = <entity_name>
-keys = '[' <columns> ']'
-update = ('true' | 'false')
+task_merge {
+  type = mergeLoad
+  entity = <entity_name>
+  keys = '[' <columns> ']'
+  update = ('true' | 'false')
 
-dataSource {
-  ...
+  dataSource {
+    ...
+  }
 }
 ```
 
