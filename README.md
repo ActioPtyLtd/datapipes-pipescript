@@ -136,13 +136,18 @@ T1 | T2
 
 For every DOM T1 receives, it will execute its task on the DOM and potentially produce further DOMs which T2 will consume in similar fashion.
 
+(start)->(T1)-1>(T2)-2>(end)
+
 ### The Ampersand Operator (&)
 To demonstrate the Ampersand operator, take the following two tasks T1 and T2 as an example:
 ```
 T1 & T2
 ```
 
-For every DOM T1 consumes, allow for T1 to produce **all** its DOM's and complete its operation entirely before sending the same DOM to T2.
+![Ampersand Operator](http://yuml.me/diagram/activity/(start)1->(T1)2->(start)3->(T2))
+
+For every DOM T1 consumes (1), allow for T1 to produce **all** its DOM's and complete (2) its operation entirely before sending the same DOM to T2 (3).
+
 
 ## Services Section
 The Services Section allows one to define API endpoints and the appropriate routing that needs to occur for different http methods. The BNF form is shown below:
