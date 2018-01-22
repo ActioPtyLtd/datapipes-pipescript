@@ -148,11 +148,13 @@ For every DOM T1 consumes, allow for T1 to produce **all** its DOM's and complet
 The Services Section allows one to define API endpoints and the appropriate routing that needs to occur for different http methods. The BNF form is shown below:
 
 ```BNF
-<services_section> ::= 'services = [ ' <services> ' ]'
-<services> ::= <service> [',' <services>]
-<service> ::= '{ path =  "' <url> '"' <service_methods> ' }'
-<service_methods> ::= <service_method> [<service_methods>]
-<service_method> ::= ('get' | 'put' | 'post' | 'patch' | 'delete') ' = ' <name>
+<services_section> ::= 'service {' [<port>] <routes> '}'
+<port> ::= 'port = ' <number>
+<routes> ::= ' routes = [ ' <routeList> ' ]'
+<routeList> ::= <route> [',' <routeList>]
+<route> ::= '{ path =  "' <url> '"' <route_methods> ' }'
+<route_methods> ::= <route_method> [<route_methods>]
+<route_method> ::= ('get' | 'put' | 'post' | 'patch' | 'delete') ' = ' <name>
 ```
 Note *name* here is the name of the pipename to start if the spefific method is called.
 
