@@ -54,9 +54,7 @@ task_extract {
 }
 ```
 
-The Task will execute the *read* query against the defined DataSource for each item in the incoming DOMs (successful) DataSet. Each of the items (also DataSets) will be in scope in any expressions used in the query part. The task produces DOMs extracted from the DataSource.
-
-Refer to [Expressions](#expressions) if needed.
+The Task will execute the *read* query against the defined DataSource for each item in the incoming DOMs (successful) DataSet. Each of the items (also DataSets) will be in scope in any [expressions](#expressions) used in the query part. The task produces DOMs extracted from the DataSource.
 
 Example:
 
