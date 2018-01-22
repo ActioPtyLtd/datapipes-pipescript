@@ -36,7 +36,7 @@ The following Task types supported are explained below:
 ### Task Extract
 To extract data from a data source (using a task called *task_extract*), you will need the following definition:
 ```HOCON
-task_extract {
+<pre><b>task_extract</b></pre> {
   type = extract
   dataSource {
     ...
