@@ -12,7 +12,6 @@ PipeScript is captured in the HOCON format and is composed of the following sect
 3. [Services](#services-section) - allows for pipeline operations to be exposed as RESTful endpoints
 4. [Startup](#startup-section) - defines which pipeline to execute by default
 
-## Sections
 The following BNF form of PipeScript&reg; is captured below:
 
 ```BNF
