@@ -63,7 +63,7 @@ task_extract {
   type = extract
   dataSource {
     type = jdbc
-    connect = "jdbc:postgresql://localhost/testDB?user=fred&password=secret&ssl=true"
+    connect = "jdbc:postgresql://localhost/finance?user=fred&password=secret&ssl=true"
     query {
       read {
         sql = "select * from invoices where amount >= $min_amount"
