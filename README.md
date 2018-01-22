@@ -291,9 +291,9 @@ Convert a DataSet to a String in JSON format and vise versa:
 ```javascript
 > ds.person.address.toJson()
 "{
-  "addr1": "George St.",
-  "addr2": "Sydney",
-  "postcode": 2000
+  \"addr1\": \"George St.\",
+  \"addr2\": \"Sydney\",
+  \"postcode\": 2000
 }": String
 ds.parseJson()
 ```
