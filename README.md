@@ -340,7 +340,7 @@ def plusDays(date: Date, days: Int): Date
 ### Selection
 Given a DataSet, dot notation allows one to access elements contained within the structure. 
 
-Example:
+Example DataSet *ds*:
 ```json
 {
   "person": {
@@ -352,6 +352,6 @@ Example:
 
 To access the persons first name we can do the following:
 ```scala
-> person.firstName
+> ds.person.firstName
 "John"
 ```
