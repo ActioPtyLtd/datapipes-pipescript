@@ -64,6 +64,8 @@ task_transform {
 }
 ```
 
+Refer to [Expressions](#expressions) to get a better understanding to what is possible.
+
 ### Task Assert
 To assert that the incoming DOM meets your criteria using an expression (using a task called *task_assert*), you will need the following definition:
 ```
@@ -73,6 +75,8 @@ task_assert {
   message = '"' <text> '"'
 }
 ```
+
+Refer to [Expressions](#expressions) to get a better understanding to what is possible. The expression should evaluate to a boolean value.
 
 ### Task Load
 To load data into a data source (using a task called *task_load*), you will need the following definition:
@@ -299,7 +303,7 @@ ds.find(a => f(a))
 ```
 
 Reduceleft with function *f*:
-```scala
+```javascript
 ds.reduceLeft((a,b) => f(a,b))
 ```
 
