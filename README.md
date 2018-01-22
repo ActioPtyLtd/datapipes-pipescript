@@ -306,5 +306,6 @@ ds.reduceLeft((a,b) => f(a,b))
 ### Utility Functions
 
 ```javascript
-toUpperCase(str: String)
+toUpperCase(str: String): String
+toLowerCase(str: String): String
 ```
