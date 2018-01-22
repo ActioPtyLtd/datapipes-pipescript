@@ -73,6 +73,7 @@ task_extract {
 }
 ```
 This example Task produces data by connecting to a postgresql database and querying all of rows in the SQL table *mytable*.
+Jump to [DataSources](#datasource-section) to understand what type of DataSources the extract Task can use.
 
 ### Task Transform
 To transform data using an expression (using a task called *task_transform*), you will need the following definition:
