@@ -328,6 +328,7 @@ def numeric(str: String, format: String, default: String): String
 // date functions
 def date(date: Date, format: String): String
 def now(): Date
-
+def dateParse(dateStr: String, formatIn: String, default: String): Date
+def plusDays(date: Date, days: Int): Date
 
 ```
