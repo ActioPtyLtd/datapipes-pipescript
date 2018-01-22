@@ -305,7 +305,29 @@ ds.reduceLeft((a,b) => f(a,b))
 
 ### Utility Functions
 
-```javascript
-toUpperCase(str: String): String
-toLowerCase(str: String): String
+```scala
+
+// string functions
+def toUpperCase(str: String): String
+def toLowerCase(str: String): String
+def trim(str: String): String
+def substring(str: String, start: Int): String
+def substring(str: String, start: Int, finish: Int): String
+def contains(str: String, targetStr: String): Boolean
+def replaceAll(str: String, find: String, replaceWith: String)
+def split(str: String, s: String): Array[String]
+def concat(strArray: Array[String], separator: String): String
+def sha256(str: String): String
+
+// numeric functions
+def numeric(str: String, default: BigDecimal): BigDecimal
+def numeric(str: String): BigDecimal
+def numeric(str: String, format: String): String
+def numeric(str: String, format: String, default: String): String
+
+// date functions
+def date(date: Date, format: String): String
+def now(): Date
+
+
 ```
