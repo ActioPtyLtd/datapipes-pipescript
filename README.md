@@ -150,7 +150,7 @@ To merge and load data  into an entity using a set of keys (using a task called 
 task_merge {
   type = mergeLoad
   entity = <entity_name>
-  keys = '[' <columns> ']'
+  keys = '[' <properties> ']'
   update = ('true' | 'false')
 
   dataSource {
@@ -161,9 +161,9 @@ task_merge {
 
 The following properties are explained below:
 * **type** - Always set to mergeLoad.
-* **entity** - The name of the entity where data will be merged to
-* **keys** - a list of columns that will identify the item in entity to be create or update
-* **update** - Specifies whether the matched items shoud be updated if differences are detected
+* **entity** - The name of the entity where data will be merged to.
+* **keys** - a list of properties that will identify whether the item in entity should be created or updated.
+* **update** - Specifies whether the matched items shoud be updated if differences are detected.
 * **dataSource** - Contains the section that defines which [DataSource](#datasource-section) to connect to and merge data.
 
 ## DataSource Section
