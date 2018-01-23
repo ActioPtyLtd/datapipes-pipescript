@@ -86,8 +86,8 @@ task_transform {
 ```
 
 The following properties are explained below:
-* *behavior* - when using *batch*, the transform is performed at a batch level, when using *expand*. The default is to transform at the DOM DataSet item level.
-* *term* - the [expressions](#expressions) to evaluate to determine if the DataSet meets the correct criteria. This should return a Boolean.
+* **behavior** - when using *batch*, the transform is performed at a batch level, when using *expand*. The default is to transform at the DOM DataSet item level.
+* **term** - the [expressions](#expressions) to evaluate to determine if the DataSet meets the correct criteria. This should return a Boolean.
 
 ### Task Assert
 To assert that the incoming DOM meets your criteria using an expression (using a task called *task_assert*), you will need the following definition:
