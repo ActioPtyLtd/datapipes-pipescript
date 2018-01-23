@@ -98,8 +98,10 @@ task_assert {
   message = '"' <text> '"'
 }
 ```
-The *abort* property specifies whether the application should abort if the assertion isn't met.
-The *statuscode* property allows one to specifiy a code that may be used as an application exit code if the assertion isn't met.
+
+The following properties are explained below:
+* *abort* - the property specifies whether the application should abort if the assertion isn't met. Default value is false.
+* *statuscode* - the property allows one to specifiy a code that may be used as an application exit code if the assertion isn't met. The default is 1.
 
 Example:
 ```
@@ -107,7 +109,6 @@ task_assert {
   type = assert
   term = "this.amount.isDefined() && this.amount >= 50.00"
   abort = true
-  statuscode = 1
   message = "Premium amount shouldn't be null or less than $50."
 }
 ```
