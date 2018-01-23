@@ -93,9 +93,21 @@ To assert that the incoming DOM meets your criteria using an expression (using a
 task_assert {
   type = assert
   term = '"' <expression> '"'
+  [abort = ('true' | 'false')]
   message = '"' <text> '"'
 }
 ```
+
+Example:
+```
+task_assert {
+  type = assert
+  term = "this.amount.isDefined() && this.amount >= 50.00"
+  abort = true
+  message = "Premium amount shouldn't be null or less than $50."
+}
+```
+This task will test for whether an amount is specified and greater than equal 50. If data can be found that fails to meet this criteria, abort and return an error exit code.
 
 Refer to [Expressions](#expressions) to get a better understanding of what is possible. The expression should evaluate to a boolean value.
 
