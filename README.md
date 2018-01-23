@@ -102,10 +102,10 @@ task_assert {
 ```
 
 The following properties are explained below:
-* *term* - the [expressions](#expressions) to evaluate to determine if the DataSet meets the correct criteria. This should return a Boolean.
-* *abort* - the property specifies whether the application should abort if the assertion isn't met. Default value is false.
-* *statuscode* - the property allows one to specifiy a code that may be used as an application exit code if the assertion isn't met. The default is 1.
-* *message* - a descriptive text for the reason of failure.
+* **term** - the [expressions](#expressions) to evaluate to determine if the DataSet meets the correct criteria. This should return a Boolean.
+* **abort** - the property specifies whether the application should abort if the assertion isn't met. Default value is false.
+* **statuscode** - the property allows one to specifiy a code that may be used as an application exit code if the assertion isn't met. The default is 1.
+* **message** - a descriptive text for the reason of failure.
 
 Example:
 ```
