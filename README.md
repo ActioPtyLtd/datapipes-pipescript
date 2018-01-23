@@ -56,7 +56,7 @@ task_extract {
 
 The following properties are explained below:
 * **type** - Always set to extract.
-* **dataSource** - Contains the section that defines which [DataSources](#datasource-section) to connect to and extract data.
+* **dataSource** - Contains the section that defines which [DataSource](#datasource-section) to connect to and extract data.
 
 The Task will execute the *read* query against the defined DataSource for each item in the incoming DOMs (successful) DataSet. Each of the items (also DataSets) will be in scope in any [expressions](#expressions) used in the query part. The task produces DOMs extracted from the DataSource.
 
@@ -139,6 +139,11 @@ task_load {
 }
 ```
 
+The following properties are explained below:
+* **type** - Always set to load.
+* **dataSource** - Contains the section that defines which [DataSource](#datasource-section) to connect to and load data.
+
+
 ### Task Merge
 To merge and load data  into an entity using a set of keys (using a task called *task_merge*), you will need the following definition:
 ```
@@ -153,6 +158,13 @@ task_merge {
   }
 }
 ```
+
+The following properties are explained below:
+* **type** - Always set to mergeLoad.
+* **entity** - The name of the entity where data will be merged to
+* **keys** - a list of columns that will identify the item in entity to be create or update
+* **update** - Specifies whether the matched items shoud be updated if differences are detected
+* **dataSource** - Contains the section that defines which [DataSource](#datasource-section) to connect to and merge data.
 
 ## DataSource Section
 ```BNF
