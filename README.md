@@ -107,7 +107,7 @@ task_assert {
   message = "Premium amount shouldn't be null or less than $50."
 }
 ```
-This task will test for whether an amount is specified and greater than equal 50. If data can be found that fails to meet this criteria, abort and return an error exit code.
+This task will test for whether an amount is specified and greater than equal 50. If data can be found that fails to meet this criteria, abort immediately.
 
 Refer to [Expressions](#expressions) to get a better understanding of what is possible. The expression should evaluate to a boolean value.
 
