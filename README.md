@@ -80,12 +80,14 @@ To transform data using an expression (using a task called *task_transform*), yo
 ```
 task_transform {
   type = transformTerm
-  behavior = ('batch' | 'expand')
+  [behavior = ('batch' | 'expand')]
   term = '"' <expression> '"'
 }
 ```
 
-Refer to [Expressions](#expressions) if needed.
+The following properties are explained below:
+* *behavior* - when using *batch*, the transform is performed at a batch level, when using *expand*. The default is to transform at the DOM DataSet item level.
+* *term* - the [expressions](#expressions) to evaluate to determine if the DataSet meets the correct criteria. This should return a Boolean.
 
 ### Task Assert
 To assert that the incoming DOM meets your criteria using an expression (using a task called *task_assert*), you will need the following definition:
@@ -100,8 +102,10 @@ task_assert {
 ```
 
 The following properties are explained below:
+* *term* - the [expressions](#expressions) to evaluate to determine if the DataSet meets the correct criteria. This should return a Boolean.
 * *abort* - the property specifies whether the application should abort if the assertion isn't met. Default value is false.
 * *statuscode* - the property allows one to specifiy a code that may be used as an application exit code if the assertion isn't met. The default is 1.
+* *message* - a descriptive text for the reason of failure.
 
 Example:
 ```
@@ -113,8 +117,6 @@ task_assert {
 }
 ```
 This task will test for whether an amount is specified and greater than equal 50. If data can be found that fails to meet this criteria, abort immediately and return an exit code of 1.
-
-Refer to [Expressions](#expressions) to get a better understanding of what is possible. The expression should evaluate to a boolean value.
 
 ### Task Load
 To load data into a data source (using a task called *task_load*), you will need the following definition:
@@ -367,13 +369,13 @@ Convert the DataSet to a String in XML format and vise versa:
 "George St.": String
 ```
 
-Check whether a DataSet has a property value defined, returns a Bool:
+Check whether a DataSet has a property value defined, returns a Boolean:
 ```scala
 > ds.person.isDefined()
 true: Boolean
 ```
 
-Check whether a DataSet has child elements, returns a Bool:
+Check whether a DataSet has child elements, returns a Boolean:
 ```scala
 > ds.person.phoneNumbers.isEmpty()
 false: Boolean
