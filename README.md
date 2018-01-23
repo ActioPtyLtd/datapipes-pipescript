@@ -91,7 +91,7 @@ task_transform {
 The following properties are explained below:
 * **type** - Always set to transformTerm.
 * **behavior** - when using *batch*, the transform is performed at a batch level, when using *expand*. The default is to transform at the DOM DataSet item level.
-* **term** - the [expressions](#expressions) to evaluate to determine if the DataSet meets the correct criteria. This should return a Boolean.
+* **term** - the [expression](#expressions) to evaluate to determine if the DataSet meets the correct criteria. This should return a Boolean.
 
 ### Task Assert
 To assert that the incoming DOM meets your criteria using an expression (using a task called *task_assert*), you will need the following definition:
@@ -107,7 +107,7 @@ task_assert {
 
 The following properties are explained below:
 * **type** - Always set to assert.
-* **term** - the [expressions](#expressions) to evaluate to determine if the DataSet meets the correct criteria. This should return a Boolean.
+* **term** - the [expression](#expressions) to evaluate to determine if the DataSet meets the correct criteria. This should return a Boolean.
 * **abort** - the property specifies whether the application should abort if the assertion isn't met. Default value is false.
 * **statuscode** - the property allows one to specifiy a code that may be used as an application exit code if the assertion isn't met. The default is 1.
 * **message** - a descriptive text for the reason of failure.
@@ -151,7 +151,7 @@ task_merge {
   type = mergeLoad
   entity = <entity_name>
   keys = '[' <properties> ']'
-  update = ('true' | 'false')
+  [update = ('true' | 'false')]
 
   dataSource {
     ...
@@ -162,8 +162,8 @@ task_merge {
 The following properties are explained below:
 * **type** - Always set to mergeLoad.
 * **entity** - The name of the entity where data will be merged to.
-* **keys** - a list of properties that will identify whether the item in entity should be created or updated.
-* **update** - Specifies whether the matched items shoud be updated if differences are detected.
+* **keys** - a list of properties, comma seperated, that will identify whether the item in entity should be created or updated.
+* **update** - Specifies whether the matched items shoud be updated if differences are detected. Default is true.
 * **dataSource** - Contains the section that defines which [DataSource](#datasource-section) to connect to and merge data.
 
 ## DataSource Section
