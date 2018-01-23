@@ -54,6 +54,10 @@ task_extract {
 }
 ```
 
+The following properties are explained below:
+* **type** - Always set to extract.
+* **dataSource** - Contains the section that defines which [DataSources](#datasource-section) to connect to and extract data.
+
 The Task will execute the *read* query against the defined DataSource for each item in the incoming DOMs (successful) DataSet. Each of the items (also DataSets) will be in scope in any [expressions](#expressions) used in the query part. The task produces DOMs extracted from the DataSource.
 
 Example:
@@ -73,7 +77,6 @@ task_extract {
 }
 ```
 This example Task produces data by connecting to a postgresql database and querying the SQL table *invoices*, filtering by the supplied *min_amount* variable.
-Jump to [DataSources](#datasource-section) to understand what type of DataSources the extract Task can use.
 
 ### Task Transform
 To transform data using an expression (using a task called *task_transform*), you will need the following definition:
@@ -86,6 +89,7 @@ task_transform {
 ```
 
 The following properties are explained below:
+* **type** - Always set to transformTerm.
 * **behavior** - when using *batch*, the transform is performed at a batch level, when using *expand*. The default is to transform at the DOM DataSet item level.
 * **term** - the [expressions](#expressions) to evaluate to determine if the DataSet meets the correct criteria. This should return a Boolean.
 
@@ -102,6 +106,7 @@ task_assert {
 ```
 
 The following properties are explained below:
+* **type** - Always set to assert.
 * **term** - the [expressions](#expressions) to evaluate to determine if the DataSet meets the correct criteria. This should return a Boolean.
 * **abort** - the property specifies whether the application should abort if the assertion isn't met. Default value is false.
 * **statuscode** - the property allows one to specifiy a code that may be used as an application exit code if the assertion isn't met. The default is 1.
