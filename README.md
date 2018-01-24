@@ -8,7 +8,7 @@ This project was conceived by the authors out of the need to simplify, unify and
 
 A very typical need that businesses have in today's modern data architecture is for their systems to communicate between each other as well as other 3rd party interfaces and cloud services:
 
-[architecture](images/Selection_118.png?raw=true)
+![architecture](images/Selection_118.png)
 
 ## Concepts
 
