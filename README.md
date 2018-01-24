@@ -21,9 +21,14 @@ PipeScript is captured in the [HOCON](https://github.com/lightbend/config) forma
 The following BNF form of PipeScript&reg; is captured below:
 
 ```BNF
-<script> ::= 'script {' <sections> '}'
+<script> ::= 'script {' 
+                <sections> 
+             '}'
 
-<sections> ::= <task_section> [<pipelines_section>] [<services_section>] <startup>
+<sections> ::= <task_section>
+               [<pipelines_section>]
+               [<services_section>]
+               <startup>
 ```
 
 ## Pipeline Section
