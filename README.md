@@ -33,16 +33,19 @@ The following BNF form of PipeScript&reg; is captured below:
 
 ## Pipeline Section
 ```BNF
-<pipelines_section> ::= 'pipelines { ' 
-                          <pipelines>
-                        '}'
+<pipelines_section> ::= 
+  'pipelines { ' 
+    <pipelines>
+  '}'
 
-<pipelines> ::= <pipeline>
-                [<pipelines>]
+<pipelines> ::= 
+  <pipeline>
+  [<pipelines>]
 
-<pipeline> ::= <name> ' {
-                 pipe = "' <pipeline_expression> '"
-               }'
+<pipeline> ::= 
+  <name> ' {
+    pipe = "' <pipeline_expression> '"
+  }'
 
 <pipeline_expression> ::= <name> ['(' <args> ')'] [<pipeline_operator> <pipeline_expression>]
 <pipeline_operator> ::= ('|' | '&')
