@@ -1,6 +1,6 @@
 # PipeScript&reg;
 
-This is a Draft Specification for PipeScript&reg;, a DSL (domain specific language) for describing how to orchestrate the flow of data between systems.
+This is a Draft Specification for PipeScript&reg;, a DSL (domain specific language) for describing how to orchestrate the flow of data between systems. PipeScript&reg; is brought to you by the people at Actio Pty Ltd. We believe in an open and accessible evolution of this DSL and welcome your feedback. [DataPipes](https://github.com/ActioPtyLtd/datapipes-examples) is the official interpreter of PipeScript&reg; written in Scala and runs on the JVM, allowing for it to be deployed on Windows, Linux and macOS systems. 
 
 ## Introduction
 
@@ -91,7 +91,7 @@ task_transform {
 The following properties are explained below:
 * **type** - Always set to transformTerm.
 * **behavior** - when using *batch*, the transform is performed at a batch level, when using *expand*. The default is to transform at the DOM DataSet item level.
-* **term** - the [expression](#expressions) to evaluate to determine if the DataSet meets the correct criteria. This should return a Boolean.
+* **term** - the [expression](#expressions) to evaluate so the task will produce a new DOM with the DataSet result.
 
 ### Task Assert
 To assert that the incoming DOM meets your criteria using an expression (using a task called *task_assert*), you will need the following definition:
@@ -390,6 +390,8 @@ Check whether a DataSet has a property value defined, returns a Boolean:
 ```scala
 > ds.person.isDefined()
 true: Boolean
+> ds.email.isDefined()
+false: Boolean
 ```
 
 Check whether a DataSet has child elements, returns a Boolean:
