@@ -293,8 +293,35 @@ The following properties are explained below:
 * **headers** - *optional*. This is not required if no headers need to be used.
 * **keyN** - *optional*. The name of the header to include in all queries.
 * **valN** - *optional*. The value of the header to include in all queries.
-* **method** - *optional*. The http method. Default is GET.
+* **method** - *optional*. The http method. Default is *get*.
 * **body** -  *optional*. The http body, which may be text, XML or JSON. The default is no body
+
+Example:
+
+```
+dataSource {
+  type = http
+  connection {
+    credentials {
+      username = "fred"
+      password = "secret"
+    }
+  }
+  headers {
+    Content-Type = "application/json"
+  }
+  query {
+    create {
+      method = put
+      uri = "https://somdomain.com.au/api/v1/user/$userid"
+      body = "${user_body.toJson()}"
+    }
+    ...
+  }
+}
+```
+
+
 
 ## Services Section
 The Services Section allows one to define API endpoints and the appropriate routing that needs to occur for different http methods. The BNF form is shown below:
