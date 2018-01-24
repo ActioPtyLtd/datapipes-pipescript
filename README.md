@@ -4,11 +4,11 @@ This is a Draft Specification for PipeScript&reg;, a [DSL](https://en.wikipedia.
 
 ## Introduction
 
-This project was conceived by the authors out of the need to simplify and standardise the approach of coordinating the flow of data between systems and generally the dissatisfaction of the fragility, long term maintenance and limitations of common accessible ETL tools such as SSIS and Pentaho.
+This project was conceived by the authors out of the need to simplify, unify and standardise the approach of coordinating the flow of data between systems while being agnostic to technology. To be able to concisely describe this protocol in a human readable format was pivotal. Additional factors include the dissatisfaction with commonly used ETL tools such as SSIS and Pentaho due to concers of fragility, maintainability and lack of flexibility to name just a few.
 
+## Concepts
 
-
-
+## Sections
 
 PipeScript is captured in the [HOCON](https://github.com/lightbend/config) format and is composed of the following sections:
 
