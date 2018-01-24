@@ -4,9 +4,9 @@ This is a Draft Specification for PipeScript&reg;, a [DSL](https://en.wikipedia.
 
 ## Introduction
 
-This project was conceived by the authors out of the need to simplify, unify and standardise the approach of coordinating the flow of data between systems while being agnostic to technology. To be able to concisely describe this protocol in a human readable format was pivotal. Additional factors include the dissatisfaction with commonly used ETL tools such as SSIS and Pentaho due to concerns of fragility, maintainability and lack of flexibility to name just a few.
+This project was conceived by the authors out of the need to simplify, unify and standardise the approach of coordinating the flow of data between systems while being agnostic to technology. To be able to concisely describe this protocol in a human readable format was pivotal. Additional factors included the dissatisfaction with commonly used ETL tools such as SSIS and Pentaho due to concerns of fragility, maintainability and lack of flexibility to name just a few.
 
-A very typical need that businesses have in today's modern data architecture is for their systems to communicate between each other as well as other 3rd party interfaces and cloud services:
+A very typical need that businesses have in today's modern data architecture is for their systems to interchange data with another as well as other 3rd party interfaces and cloud services:
 
 ![architecture](images/arch.png)
 
