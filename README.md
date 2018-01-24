@@ -508,11 +508,7 @@ Note: Here *name* is the default pipeline to execute.
 <if_statement> ::= 'if(' <expression> ')' ['elseif(' <expression> ')'] 'else' <expression>
 ```
 
-All expressions evaluate to a DataSet. DataSets are hierarchical data structures. DataSets can be defined by the following data types: 
-
-![DataSet](http://yuml.me/diagram/scruffy;dir:TB/class/[<<DataSet>>]^[Record],%20[<<DataSet>>]^[Array],%20[Record]++-%20%20%20%20%20%20fields%20*[<<DataSet>>],%20[Array]++-%20%20%20%20%20%20items%20*[<<DataSet>>],%20[<<DataSet>>]^[String;Date;Numeric;Boolean;Empty])
-
-These data structures can be thought of as json structures, such as the following:
+All expressions evaluate to a [DataSet](#dataset). We will use the following example DataSet (call it *ds*) to demonstrate the different type of expressions.
 
 ```json
 {
@@ -532,7 +528,6 @@ These data structures can be thought of as json structures, such as the followin
   }
 }
 ```
-We will use this example DataSet (call it *ds*) to demonstrate the different type of expressions.
 
 ### Literal
 Literals can be of type Numeric, String, Boolean:
