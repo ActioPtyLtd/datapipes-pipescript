@@ -4,7 +4,7 @@ This is a Draft Specification for PipeScript&reg;, a [DSL](https://en.wikipedia.
 
 ## Introduction
 
-This project was conceived by the authors out of the need to simplify, unify and standardise the approach of coordinating the flow of data between systems while being agnostic to technology. To be able to concisely describe this protocol in a human readable format was pivotal. Additional factors include the dissatisfaction with commonly used ETL tools such as SSIS and Pentaho due to concers of fragility, maintainability and lack of flexibility to name just a few.
+This project was conceived by the authors out of the need to simplify, unify and standardise the approach of coordinating the flow of data between systems while being agnostic to technology. To be able to concisely describe this protocol in a human readable format was pivotal. Additional factors include the dissatisfaction with commonly used ETL tools such as SSIS and Pentaho due to concerns of fragility, maintainability and lack of flexibility to name just a few.
 
 ## Concepts
 
@@ -213,7 +213,7 @@ The DataSource section can be described in BNF form as follows:
 <datasource_query> ::= <name> ' {' <templates> '}'
 
 <templates> ::= <name> ' = "' <template> '"' [<templates>] 
-<template> ::= <text> [('$' <expression> | '${' <expression> '}' | '${' <expression> '}')] <template>
+<template> ::= <text> [('$' <expression> | '${' <expression> '}')] <template>
 
 ```
 
@@ -247,7 +247,9 @@ Example:
 ```
 dataSource {
   type = jdbc
-  connect = "jdbc:postgresql://localhost/finance?user=fred&password=secret&ssl=true"
+  connection {
+    url = "jdbc:postgresql://localhost/finance?user=fred&password=secret&ssl=true"
+  }
   query {
     read {
       sql = "select * from invoices where amount >= $min_amount"
