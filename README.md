@@ -1,8 +1,14 @@
 # PipeScript&reg;
 
-This is a Draft Specification for PipeScript&reg;, a DSL (domain specific language) for describing how to orchestrate the flow of data between systems. PipeScript&reg; is brought to you by the people at Actio Pty Ltd. We believe in an open and accessible evolution of this DSL and welcome your feedback. [DataPipes](https://github.com/ActioPtyLtd/datapipes-examples) is the official interpreter of PipeScript&reg; written in Scala and runs on the JVM, allowing for it to be deployed on Windows, Linux and macOS systems. 
+This is a Draft Specification for PipeScript&reg;, a [DSL](https://en.wikipedia.org/wiki/Domain-specific_language) (domain specific language) for describing how to orchestrate the flow of data between systems. PipeScript&reg; is brought to you by the people at Actio Pty Ltd. We believe in an open and accessible evolution of this DSL and welcome your feedback. [DataPipes](https://github.com/ActioPtyLtd/datapipes-examples) is the official interpreter of PipeScript&reg; written in Scala and runs on the JVM, allowing for it to be deployed on Windows, Linux and macOS systems. 
 
 ## Introduction
+
+This project was conceived by the authors out of the need to simplify and standardise the approach of coordinating the flow of data between systems and generally the dissatisfaction of the fragility, long term maintenance and limitations of common accessible ETL tools such as SSIS and Pentaho.
+
+
+
+
 
 PipeScript is captured in the [HOCON](https://github.com/lightbend/config) format and is composed of the following sections:
 
