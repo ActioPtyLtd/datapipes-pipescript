@@ -6,6 +6,10 @@ This is a Draft Specification for PipeScript&reg;, a [DSL](https://en.wikipedia.
 
 This project was conceived by the authors out of the need to simplify, unify and standardise the approach of coordinating the flow of data between systems while being agnostic to technology. To be able to concisely describe this protocol in a human readable format was pivotal. Additional factors include the dissatisfaction with commonly used ETL tools such as SSIS and Pentaho due to concerns of fragility, maintainability and lack of flexibility to name just a few.
 
+A very typical need that businesses have in today's modern data architecture is for their systems to communicate between each other as well as other 3rd party interfaces and cloud services:
+
+[architecture](images/Selection_118.png)
+
 ## Concepts
 
 ## Sections
@@ -95,7 +99,7 @@ T1 & T2
 
 For every DOM *T1* consumes (1), allow for *T1* to produce **all** its DOM's and complete (2) its operation entirely before allowing *T2* to consume the same DOM (3).
 
-## Task Section
+## Tasks Section
 Tasks can be identified by name and live under the tasks section of the configuration. Each task should have a task type defined which indicates what function it has. Generally, if a task supports different behaviors it will have a behavior defined. For Extractors and Loaders, tasks will require a Data Source to be defined.
 
 The following BNF describes the supported syntax for tasks:
@@ -241,7 +245,7 @@ The following properties are explained below:
 * **update** - Specifies whether the matched items shoud be updated if differences are detected. Default is true.
 * **dataSource** - Contains the section that defines which [DataSource](#datasource-section) to connect to and merge data.
 
-## DataSource Section
+## DataSources Section
 DataSources define systems where data can be retrieved and manipulated. Queries are ways of interacting with that system and its use depends on the communication protocol of that DataSource. Queries that extract data out of a system will produce DataSets, while manipulation of the DataSource data will require the DataSource to consume DataSets. All queries allow for templating so that incoming data can potentially be used to produce different queries.
 
 The DataSource section can be described in BNF form as follows:
