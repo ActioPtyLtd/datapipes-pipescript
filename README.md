@@ -227,11 +227,11 @@ dataSource {
   type = sql
 
   connection {
-    url = '"' <url> '"'
+    url = <url>
   }
   query {
     <verb> {
-      sql = 
+      sql = <sql>
     }
     ...
   }
@@ -239,7 +239,6 @@ dataSource {
 ```
 
 The following properties are explained below:
-* **type** - Always set to sql.
 * **url** - The JDBC connection string.
 * **sql** -  The SQL script to execute.
 
@@ -266,32 +265,36 @@ dataSource {
 ```
 dataSource {
   type = http
-  [connection {
+  connection {
     credentials {
-      username = '"' <user name> '"'
-      password = '"' <password> '"'
+      username = <username>
+      password = <password>
     }
-  }]
-  [headers {
-    <key_value_list>
-  }]
+  }
+  headers {
+    <key1> = <val1>
+    ...
+  }
   query {
     <verb> {
-      [method = {'get' | 'put' | 'patch' | 'post' | 'delete' }]
-      uri = '"' <uri> '"'
-      [body = '"' <body> '"']
+      method = <method>
+      uri = <uri>
+      body = <body>
     }
     ...
   }
 }
 ```
+
 The following properties are explained below:
-* **type** - Always set to http.
-* **connection** - This section is optional. Use when Basic Authentication is required.
+* **connection** - *optional*. This section is optional. Use when Basic Authentication is required.
 * **username**  - The user to authenticate as.
 * **password** - The password to authenticate with.
-* **method** - The http method. Default is GET.
-* **body** -  The http body, which may be text, XML or JSON. This is optional.
+* **headers** - *optional*. This is not required if no headers need to be used.
+* **keyN** - *optional*. The name of the header to include in all queries.
+* **valN** - *optional*. The value of the header to include in all queries.
+* **method** - *optional*. The http method. Default is GET.
+* **body** -  *optional*. The http body, which may be text, XML or JSON. The default is no body
 
 ## Services Section
 The Services Section allows one to define API endpoints and the appropriate routing that needs to occur for different http methods. The BNF form is shown below:
