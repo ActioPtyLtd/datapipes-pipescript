@@ -26,6 +26,34 @@ The following BNF form of PipeScript&reg; is captured below:
 <sections> ::= <task_section> [<pipelines_section>] [<services_section>] <startup>
 ```
 
+## Pipeline Section
+```BNF
+<pipelines_section> ::= 'pipelines { ' <pipelines> ' }'
+<pipelines> ::= <pipeline> [<pipelines>]
+<pipeline> ::= <name> ' { pipe = "' <pipeline_expression> '" }'
+<pipeline_expression> ::= <name> ['(' <args> ')'] [<pipeline_operator> <pipeline_expression>]
+<pipeline_operator> ::= ('|' | '&')
+```
+
+### The Pipe Operator (|)
+To demonstrate the Pipe operator, take the following two [Tasks](#task-section) *T1* and *T2* as an example:
+```
+T1 | T2
+```
+![Pipe Operator](http://yuml.me/diagram/activity/(start)1->(T1)2->(T2))
+
+For every DOM *T1* receives (1), it will execute its task on the DOM and potentially produce further DOMs which *T2* will consume in similar fashion (2).
+
+### The Ampersand Operator (&)
+To demonstrate the Ampersand operator, take the following two tasks *T1* and *T2* as an example:
+```
+T1 & T2
+```
+
+![Ampersand Operator](http://yuml.me/diagram/activity/(start)1->(T1)2->(start)3->(T2))
+
+For every DOM *T1* consumes (1), allow for *T1* to produce **all** its DOM's and complete (2) its operation entirely before allowing *T2* to consume the same DOM (3).
+
 ## Task Section
 Tasks can be identified by name and live under the tasks section of the configuration. Each task should have a task type defined which indicates what function it has. Generally, if a task supports different behaviors it will have a behavior defined. For Extractors and Loaders, tasks will require a Data Source to be defined.
 
@@ -173,6 +201,9 @@ The following properties are explained below:
 * **dataSource** - Contains the section that defines which [DataSource](#datasource-section) to connect to and merge data.
 
 ## DataSource Section
+DataSources define systems where data can be retrieved and manipulated. Queries are ways of interacting with that system and its use depends on the communication protocol of that DataSource. Queries that extract data out of a system will produce DataSets, while manipulation of the DataSource data will require the DataSource to consume DataSets. All queries allow for templating so that incoming data can potentially be used to produce different queries.
+
+The DataSource section can be described in BNF form as follows:
 ```BNF
 <datasource_section> ::= 'dataSource { ' <datasource> ' }'
 <datasource> ::= 'type = "' <text> '"' [<key_values>] [query_section]
@@ -182,38 +213,85 @@ The following properties are explained below:
 <datasource_query> ::= <name> ' {' <templates> '}'
 
 <templates> ::= <name> ' = "' <template> '"' [<templates>] 
-<template> ::= <text> [('$'<expression> | '${'<expression>'}')] <template>
+<template> ::= <text> [('$' <expression> | '${' <expression> '}' | '${' <expression> '}')] <template>
 
 ```
 
-## Pipeline Section
-```BNF
-<pipelines_section> ::= 'pipelines { ' <pipelines> ' }'
-<pipelines> ::= <pipeline> [<pipelines>]
-<pipeline> ::= <name> ' { pipe = "' <pipeline_expression> '" }'
-<pipeline_expression> ::= <name> ['(' <args> ')'] [<pipeline_operator> <pipeline_expression>]
-<pipeline_operator> ::= ('|' | '&')
+The following sections describe how to configure DataSources for Databases, Files, S3 and Http
+
+### Databases
+To execute sql queries against a database, include the JDBC connection string that will access the relevant database. The DataSource section needs to look as follows:
+
+```
+dataSource {
+  type = sql
+
+  connection {
+    url = '"' <url> '"'
+  }
+  query {
+    <verb> {
+      sql = 
+    }
+    ...
+  }
+}
 ```
 
-### The Pipe Operator (|)
-To demonstrate the Pipe operator, take the following two tasks *T1* and *T2* as an example:
+The following properties are explained below:
+* **type** - Always set to sql.
+* **url** - The JDBC connection string.
+* **sql** -  The SQL script to execute.
+
+Example:
+
 ```
-T1 | T2
+dataSource {
+  type = jdbc
+  connect = "jdbc:postgresql://localhost/finance?user=fred&password=secret&ssl=true"
+  query {
+    read {
+      sql = "select * from invoices where amount >= $min_amount"
+    }
+  }
+}
 ```
-![Pipe Operator](http://yuml.me/diagram/activity/(start)1->(T1)2->(T2))
 
-For every DOM *T1* receives (1), it will execute its task on the DOM and potentially produce further DOMs which *T2* will consume in similar fashion (2).
+### Files
 
-### The Ampersand Operator (&)
-To demonstrate the Ampersand operator, take the following two tasks *T1* and *T2* as an example:
+### S3
+
+### Http(s)
+
 ```
-T1 & T2
+dataSource {
+  type = http
+  [connection {
+    credentials {
+      username = '"' <user name> '"'
+      password = '"' <password> '"'
+    }
+  }]
+  [headers {
+    <key_value_list>
+  }]
+  query {
+    <verb> {
+      [method = {'get' | 'put' | 'patch' | 'post' | 'delete' }]
+      uri = '"' <uri> '"'
+      [body = '"' <body> '"']
+    }
+    ...
+  }
+}
 ```
-
-![Ampersand Operator](http://yuml.me/diagram/activity/(start)1->(T1)2->(start)3->(T2))
-
-For every DOM *T1* consumes (1), allow for *T1* to produce **all** its DOM's and complete (2) its operation entirely before allowing *T2* to consume the same DOM (3).
-
+The following properties are explained below:
+* **type** - Always set to http.
+* **connection** - This section is optional. Use when Basic Authentication is required.
+* **username**  - The user to authenticate as.
+* **password** - The password to authenticate with.
+* **method** - The http method. Default is GET.
+* **body** -  The http body, which may be text, XML or JSON. This is optional.
 
 ## Services Section
 The Services Section allows one to define API endpoints and the appropriate routing that needs to occur for different http methods. The BNF form is shown below:
