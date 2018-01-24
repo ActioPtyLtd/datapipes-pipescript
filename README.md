@@ -10,6 +10,8 @@ A very typical need that businesses have in today's modern data architecture is 
 
 ![architecture](images/arch.png)
 
+One of the objectives of the implementor of PipeScript&reg; is for the application to be lightweight, cross-platform and easy to deploy. Robustness, security, monitoring and logging should be centre to core platform features.
+
 ## Concepts
 
 ## Sections
