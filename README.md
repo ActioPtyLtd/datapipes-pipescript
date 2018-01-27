@@ -49,7 +49,7 @@ Tasks also have a lifecycle of the following:
 Therefore it is not unreasonable to assume Tasks capture private state. This makes [Actors](https://en.wikipedia.org/wiki/Actor_model) a great fit to model them in a concurrent setting.
 
 ### DataSets
-DataSets are hierarchical data structures used by DataPipes internally. Elements of the data structure can be accessed using expressions within tasks. DataSets can be defined by the following data types: 
+DataSets are hierarchical data structures used in DOMs. Elements of the data structure can be accessed using [expressions](#expressions) within Tasks. DataSets can be defined by the following data types: 
 
 <!--
 [note: DataSets contain typed hierarchical data{bg:cornsilk}]
