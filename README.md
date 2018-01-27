@@ -17,7 +17,7 @@ One of the objectives of the implementor of PipeScript&reg; is for the applicati
 ### The DOM
 DOMs are the data structures produced and consumed by Tasks. Pipelines enable and coordinate the flow of DOMs between Tasks. Tasks have the capability to investigate and utilise components of the DOM through [expressions](#expressions). To picture the DOM hierarchy in-flight, let's use the following as an example:
 
-~[DOMs](http://yuml.me/diagram/plain/activity/(start)-D0>(T1)-D1>(T2)-D2(end))
+![DOMs](http://yuml.me/diagram/plain/activity/(start)-D0>(T1)-D1>(T2)-D2(end))
 
 We have two Tasks *T1* and *T2*. Task *T1* will firstly consume the initalisation DOM *D0*. *T1* then produces the DOM *D1*, which *T2* will consume before *T2* produces the DOM *D2* to complete the the pipeline. You can say Tasks *react* on external events captured in data structures we have labeled DOMs.
 
