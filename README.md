@@ -19,9 +19,9 @@ DOMs are the data structures produced and consumed by Tasks. Pipelines enable an
 
 ![DOMs](http://yuml.me/diagram/plain/activity/(start)-D0>(T1)-D1>(T2)-D2(end))
 
-We have two Tasks *T1* and *T2*. Task *T1* will firstly consume the initalisation DOM *D0*. *T1* then produces the DOM *D1*, which *T2* will consume before *T2* produces the DOM *D2* to complete the the pipeline. You can say Tasks *react* on external events captured in data structures we have labeled DOMs.
+We have two Tasks *T1* and *T2*. Task *T1* will firstly consume the initalisation DOM *D0*. *T1* then produces the DOM *D1*, which *T2* will consume before *T2* produces the DOM *D2* to complete the pipeline. You can say Tasks *react* on external events captured in data structures we have labeled DOMs.
 
-In more detail, the DOM captures data that has been extracted or utilised sucessfully (or unsuccessfully) by a Task together with any events captured in the process. They can be visualised as follows:
+In more detail, the DOM captures [DataSets](#datasets) that have been sucessfully (or unsuccessfully) extracted or utilised by a Task together with any events captured in the process. They can be visualised as follows:
 
 <!--[note: DOMs are immutable objects that flow through Pipes and Tasks {bg:cornsilk}]
 
