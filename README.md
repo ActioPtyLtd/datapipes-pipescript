@@ -15,13 +15,13 @@ One of the objectives of the implementor of PipeScript&reg; is for the applicati
 ## Key Concepts
 
 ### The DOM
-DOMs are the data structures produced and consumed by Tasks. Pipelines enable and coordinate the flow of DOMs between Tasks. Tasks have the capability to investigate and utilise components of the DOM through [expressions](#expressions). To picture the DOM hierarchy in-flight, let's use the following as an example:
+DOMs are the data structures produced and consumed by [Tasks](#tasks). Pipelines enable and coordinate the flow of DOMs between Tasks. Tasks have the capability to investigate and utilise components of the DOM through [expressions](#expressions). To picture the DOM hierarchy in-flight, let's use the following as an example:
 
 ![DOMs](http://yuml.me/diagram/plain/activity/(start)-D0>(T1)-D1>(T2)-D2(end))
 
-We have two Tasks *T1* and *T2*. Task *T1* will firstly consume the initalisation DOM *D0*. *T1* then produces the DOM *D1*, which *T2* will consume before *T2* produces the DOM *D2* to complete the pipeline. You can say Tasks *react* on external events captured in data structures we have labeled DOMs.
+We have two Tasks *T1* and *T2*. Task *T1* will firstly consume the initalisation DOM *D0*. *T1* then produces the DOM *D1*, which *T2* will consume before *T2* produces the DOM *D2* to complete the pipeline. For illustration purposes, this example only shows a Task consuming and producing a single DOM each, whereas in reality Tasks may produce many DOMs, such as Tasks that extract data out of DataSources. You can say Tasks *react* on external events captured in data structures we have labeled DOMs.
 
-In more detail, the DOM capture [DataSets](#datasets) which have been sucessfully (or unsuccessfully) extracted or utilised by a Task together with any events captured in the process. They can be visualised as follows:
+In more detail, the DOM captures [DataSets](#datasets) which have been sucessfully (or unsuccessfully) extracted or utilised by a Task together with any events captured in the process. They can be visualised as follows:
 
 <!--[note: DOMs are immutable objects that flow through Pipes and Tasks {bg:cornsilk}]
 
@@ -30,6 +30,10 @@ In more detail, the DOM capture [DataSets](#datasets) which have been sucessfull
 [DOM]++-child *>[DOM]-->
 
 ![DOMs](http://yuml.me/diagram/scruffy/class/[note:%20DOMs%20are%20immutable%20objects%20that%20flow%20through%20Pipes%20and%20Tasks%20{bg:cornsilk}],%20,%20[DOM]++-successful%2Ffailed>[DataSet],%20[DOM]++-events%20*>[Events],%20[DOM]++-child%20*>[DOM])
+
+### Tasks
+The function of a Task is to consume DOMs and produce further DOMs. They may or may not perform side-effects before producing further DOMs. 
+
 
 ### DataSets
 DataSets are hierarchical data structures used by DataPipes internally. Elements of the data structure can be accessed using expressions within tasks. DataSets can be defined by the following data types: 
