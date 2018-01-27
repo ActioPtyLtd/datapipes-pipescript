@@ -32,7 +32,7 @@ In more detail, the DOM captures [DataSets](#datasets) which have been sucessful
 ![DOMs](http://yuml.me/diagram/scruffy/class/[note:%20DOMs%20are%20immutable%20objects%20that%20flow%20through%20Pipes%20and%20Tasks%20{bg:cornsilk}],%20,%20[DOM]++-successful%2Ffailed>[DataSet],%20[DOM]++-events%20*>[Events],%20[DOM]++-child%20*>[DOM])
 
 ### Tasks
-The function of a Task is to consume DOMs and produce further DOMs. They may or may not perform side-effects before producing further DOMs. You can say Tasks *react* on external events captured in data structures we have labeled DOMs.
+The function of a Task is to consume DOMs and produce further DOMs. They may or may not perform side-effects before producing further DOMs. You can say Tasks *react* on external events captured in by DOMs.
 
 Tasks at a high level can be of either extract, transform or load type:
 
