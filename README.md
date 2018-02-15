@@ -34,6 +34,8 @@ In more detail, the DOM captures [DataSets](#datasets) which have been sucessful
 ### Tasks
 The function of a Task is to consume DOMs and produce further DOMs. They may or may not perform side-effects before producing further DOMs. You can say Tasks *react* on external events captured by DOMs.
 
+![alt text](http://yuml.me/diagram/scruffy/activity/(start)->(Task)->(end))
+
 Tasks at a high level can be of either extract, transform or load type:
 
 * Extractors - query DataSources to create a stream of data
@@ -49,7 +51,11 @@ Tasks also have a lifecycle of the following:
 Therefore it is not unreasonable to assume Tasks capture private state. This makes [Actors](https://en.wikipedia.org/wiki/Actor_model) a great fit to model them in a concurrent setting.
 
 ### Pipelines
-Given that Tasks are consumers and producers of DOMs, Pipelines dictate how to coordinate the flow of DOMs between Tasks. Pipelines can be synchronous or asynchronous in nature.
+Given that Tasks are consumers and producers of DOMs, Pipelines dictate how to coordinate the flow of DOMs between Tasks. Pipelines can be synchronous or asynchronous in nature. 
+
+They can for example connect extractors and transforms together and similarly transforms to loaders to create a simple ETL pipeline.
+
+![alt text](http://yuml.me/diagram/scruffy/activity/(start)->(Extract)->(Transform)->(Load)->(end))
 
 ### DataSets
 DataSets are hierarchical data structures used in DOMs. Elements of the data structure can be accessed using [expressions](#expressions) within Tasks. DataSets can be defined by the following data types: 
@@ -90,6 +96,12 @@ These data structures can be thought of as json structures, such as the followin
   }
 }
 ```
+
+### Events
+Tasks may generate Events, such as when the task started and completed, or if any exceptions occurred during processing. They essentially capture activity throughout the life cycle of a Task. This also includes capturing metrics. Events can be visualised as follows:
+
+![alt text](http://yuml.me/diagram/scruffy/class/[Event|time:%20timestamp]++-data>[DataSet],%20[Event]-created_by%201%20%20%20%20%20>[Task])
+
 
 ## PipeScript&reg; Sections
 
