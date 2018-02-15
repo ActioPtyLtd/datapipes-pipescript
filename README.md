@@ -48,6 +48,9 @@ Tasks also have a lifecycle of the following:
 
 Therefore it is not unreasonable to assume Tasks capture private state. This makes [Actors](https://en.wikipedia.org/wiki/Actor_model) a great fit to model them in a concurrent setting.
 
+### Pipelines
+Given that Tasks are consumers and producers of DOMs, Pipelines dictate how to coordinate the flow of DOMs between Tasks. Pipelines can be synchronous or asynchronous in nature.
+
 ### DataSets
 DataSets are hierarchical data structures used in DOMs. Elements of the data structure can be accessed using [expressions](#expressions) within Tasks. DataSets can be defined by the following data types: 
 
@@ -111,6 +114,7 @@ The following BNF form of PipeScript&reg; is captured below:
   <task_section>
   [<pipelines_section>]
   [<services_section>]
+  [<schedule_section>]
   <startup>
 ```
 
@@ -128,6 +132,9 @@ script {
     ...
   }
   services {
+    ...
+  }
+  schedule {
     ...
   }
   startup {
@@ -148,13 +155,43 @@ script {
   [<pipelines>]
 
 <pipeline> ::= 
-  <name> ' {
-    pipe = "' <pipeline_expression> '"
+  <name> ' {'
+    [<schedule>]
+    'pipe = "' <pipeline_expression> '"
   }'
+
+<schedule> ::= 
+  'schedule {
+    cron = "' <cron_expression> '"
+  '}'
 
 <pipeline_expression> ::= <name> ['(' <args> ')'] [<pipeline_operator> <pipeline_expression>]
 <pipeline_operator> ::= ('|' | '&')
 ```
+
+Example:
+
+```
+  load_users_to_datalake {
+    pipe = "extract_users_from_DB | filter_only_active_users | load_user_to_datalake"
+  }
+```
+This example pipeline will extract users from a database and load it into the datalake.
+
+### Pipeline Schedule
+By specifying a schedule component for a pipeline, the interpreter should ensure the pipeline is executed at appropriate times defined by a [cron expression](https://en.wikipedia.org/wiki/Cron).
+
+Example:
+
+```
+  load_users_to_datalake {
+    schedule {
+      cron = "0 1 * * * ?"
+    }
+    pipe = "extract_users_from_DB | filter_only_active_users | load_user_to_datalake"
+  }
+```
+This example pipeline will extract users from a database and load it into the datalake at 1 a.m. every day.
 
 ### The Pipe Operator (|)
 To demonstrate the Pipe operator, take the following two [Tasks](#task-section) *T1* and *T2* as an example:
@@ -497,8 +534,6 @@ Note: Here *name* is the default pipeline to execute.
 
 ## Common
 ```BNF
-
-<startup> ::= 'startup { exec = ' <name> ' }'
 
 <key_values> ::= <name>
 <name> ::= ;alphanumeric text
