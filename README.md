@@ -196,11 +196,11 @@ The cron expression is comprised of 6 fields separated by white space. The field
 
 Special Chars:
 
-* `* (“all values”) - used to select all values within a field. For example, “*” in the minute field means “every minute”.
+* &ast; (“all values”) - used to select all values within a field. For example, “*” in the minute field means “every minute”.
 
 * ? (“no specific value”) - useful when you need to specify something in one of the two fields in which the character is allowed, but not the other. For example, if I want my trigger to fire on a particular day of the month (say, the 10th), but don’t care what day of the week that happens to be, I would put “10” in the day-of-month field, and “?” in the day-of-week field. See the examples below for clarification.
 
-* - used to specify ranges. For example, “10-12” in the hour field means “the hours 10, 11 and 12”.
+* `-` used to specify ranges. For example, “10-12” in the hour field means “the hours 10, 11 and 12”.
 
 * , used to specify additional values. For example, “MON,WED,FRI” in the day-of-week field means “the days Monday, Wednesday, and Friday”.
 
