@@ -459,7 +459,8 @@ dataSource {
 datasource ::= '
   dataSource {
     type = file
-    format = ' <format> '
+    [<format>]
+    [<protocol>]
     query {
       ' <verb> ' {
         directory = ' <directory> '
@@ -468,11 +469,17 @@ datasource ::= '
     }
   }'
 
-format ::= 'csv' | 'dbf' | 'txt' | 'xls' | 'json'
+format ::= 'format = ' <file_format>
+file_format ::= 'txt' | 'csv' | 'dbf' | 'xls' | 'json'
+
+protocol ::= 'protocol = ' <file_protocol>
+file_protocol ::= 'lfs' | 'ftp' | 'sftp' | 's3'
+
 ```
 
 The following properties are explained below:
-* **format** - Specifies what type of file is being used. 
+* **format** - *optional*. Specifies what type of file is being used. The default value is txt.
+* **protocol** - *optional*. Specifies what transfer protocol should be used. The default is local file system (lfs).
 * **directory**  - The directory of where the file(s) reside.
 * **fileName**  - A regular expression of the file(s) to read or write to.
 
@@ -491,8 +498,6 @@ dataSource {
   }
 
 ```
-
-### S3
 
 ### Http(s)
 To perform http requests against an endpoint, the following BNF definition can be used:
