@@ -419,19 +419,18 @@ The following sections describe how to configure DataSources for Databases, File
 To execute sql queries against a database, include the JDBC connection string that will access the relevant database. The DataSource section needs to look as follows:
 
 ```
-dataSource {
-  type = sql
-
-  connection {
-    url = <url>
-  }
-  query {
-    <verb> {
-      sql = <sql>
+datasource ::= '
+  dataSource {
+    type = sql
+    connection {
+      url = ' <url> '
     }
-    ...
-  }
-}
+    query {
+      ' <verb> '{
+        sql = ' <sql> '
+      }
+    }
+  }'
 ```
 
 The following properties are explained below:
@@ -442,7 +441,7 @@ Example:
 
 ```
 dataSource {
-  type = jdbc
+  type = sql
   connection {
     url = "jdbc:postgresql://localhost/finance?user=fred&password=secret&ssl=true"
   }
@@ -461,27 +460,41 @@ dataSource {
 ### Http(s)
 
 ```
-dataSource {
-  type = http
+datasource ::= '
+  dataSource {
+    type = http
+    [<connection>]
+    [<headers>]
+    query {
+      ' <verb> ' {
+        ' [<method>] '
+        uri = ' <uri> '
+        ' <query_body> '
+      }
+    }
+  }
+'
+
+connection ::= ' 
   connection {
     credentials {
-      username = <username>
-      password = <password>
+      username = ' <username> '
+      password = ' <password> '
     }
-  }
+  }'
+
+query_body ::= ' body = "' <body> '"'
+
+headers ::= '
   headers {
-    <key1> = <val1>
-    ...
-  }
-  query {
-    <verb> {
-      method = <method>
-      uri = <uri>
-      body = <body>
-    }
-    ...
-  }
-}
+    ' <header_list> '
+  }'
+
+header_list ::= 
+  <header>
+  <header_list>
+
+header ::= <key> ' = "' <value> '"'
 ```
 
 The following properties are explained below:
@@ -489,8 +502,8 @@ The following properties are explained below:
 * **username**  - The user to authenticate as.
 * **password** - The password to authenticate with.
 * **headers** - *optional*. This is not required if no headers need to be used.
-* **keyN** - *optional*. The name of the header to include in all queries.
-* **valN** - *optional*. The value of the header to include in all queries.
+* **key** - *optional*. The name of the header to include in all queries.
+* **value** - *optional*. The value of the header to include in all queries.
 * **method** - *optional*. The http method. Default is *get*.
 * **body** -  *optional*. The http body, which may be text, XML or JSON. The default is no body
 
@@ -518,8 +531,6 @@ dataSource {
   }
 }
 ```
-
-
 
 ## Services Section
 The Services Section allows one to define API endpoints and the appropriate routing that needs to occur for different http methods. The BNF form is shown below:
