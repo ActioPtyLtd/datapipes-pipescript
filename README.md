@@ -107,8 +107,8 @@ Tasks may generate Events, such as when the task started and completed, or if an
 
 PipeScript is captured in the [HOCON](https://github.com/lightbend/config) format and is composed of the following sections:
 
-1. [Tasks](#task-section) - defines operations to be performed using the incoming DOM
-2. [DataSources](#datasource-section) - defines how to connect and communicate with a source
+1. [Tasks](#tasks-section) - defines operations to be performed using the incoming DOM
+2. [DataSources](#datasources-section) - defines how to connect and communicate with a source
 2. [Pipelines](#pipeline-section) - defines flow control of DOMs between Tasks
 3. [Services](#services-section) - allows for pipeline operations to be exposed as RESTful endpoints
 4. [Startup](#startup-section) - defines which pipeline to execute by default
