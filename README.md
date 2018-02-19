@@ -416,7 +416,7 @@ The DataSource section can be described in BNF form as follows:
 The following sections describe how to configure DataSources for Databases, Files, S3 and Http
 
 ### Databases
-To execute sql queries against a database, include the JDBC connection string that will access the relevant database. The DataSource section needs to look as follows:
+To execute sql queries against a database, include the JDBC connection string that will access the relevant database. The DataSource section in BNF form is as follows:
 
 ```
 datasource ::= '
@@ -455,9 +455,31 @@ dataSource {
 
 ### Files
 
+```
+datasource ::= '
+  dataSource {
+    type = file
+    format = ' <format> '
+    query {
+      ' <verb> ' {
+        directory = ' <directory> '
+        fileName = ' <fileName> '
+      }
+    }
+  }'
+
+format ::= 'csv' | 'dbf' | 'txt' | 'xls' | 'json'
+```
+
+The following properties are explained below:
+* **format** - Specifies what type of file is being used. 
+* **directory**  - The directory of where the file(s) reside.
+* **fileName**  - The name of the file to read or write to.
+
 ### S3
 
 ### Http(s)
+To perform http requests against an endpoint, the following BNF definition can be used:
 
 ```
 datasource ::= '
@@ -467,7 +489,7 @@ datasource ::= '
     [<headers>]
     query {
       ' <verb> ' {
-        ' [<method>] '
+        ' [<query_method>] '
         uri = ' <uri> '
         ' <query_body> '
       }
@@ -483,8 +505,6 @@ connection ::= '
     }
   }'
 
-query_body ::= ' body = "' <body> '"'
-
 headers ::= '
   headers {
     ' <header_list> '
@@ -495,6 +515,10 @@ header_list ::=
   <header_list>
 
 header ::= <key> ' = "' <value> '"'
+
+query_body ::= ' body = "' <body> '"'
+query_method ::= ' method = "' <method> '"'
+
 ```
 
 The following properties are explained below:
@@ -502,10 +526,10 @@ The following properties are explained below:
 * **username**  - The user to authenticate as.
 * **password** - The password to authenticate with.
 * **headers** - *optional*. This is not required if no headers need to be used.
-* **key** - *optional*. The name of the header to include in all queries.
-* **value** - *optional*. The value of the header to include in all queries.
-* **method** - *optional*. The http method. Default is *get*.
-* **body** -  *optional*. The http body, which may be text, XML or JSON. The default is no body
+* **key** - The name of the header to include in all queries.
+* **value** - The value of the header to include in all queries.
+* **method** - The http method. Default is *get*.
+* **body** -  The http body, which may be text, XML or JSON. The default is no body
 
 Example:
 
