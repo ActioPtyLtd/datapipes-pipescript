@@ -474,7 +474,23 @@ format ::= 'csv' | 'dbf' | 'txt' | 'xls' | 'json'
 The following properties are explained below:
 * **format** - Specifies what type of file is being used. 
 * **directory**  - The directory of where the file(s) reside.
-* **fileName**  - The name of the file to read or write to.
+* **fileName**  - A regular expression of the file(s) to read or write to.
+
+Example:
+
+```
+dataSource {
+    type = file
+    format = csv
+    query {
+      read {
+        directory = "./employees"
+        fileName = "employees.csv"
+      }
+    }
+  }
+
+```
 
 ### S3
 
