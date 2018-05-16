@@ -1,4 +1,4 @@
-# PipeScript&reg;
+# PipeScript&reg (v2);
 
 This is a Draft Specification for PipeScript&reg;, a [DSL](https://en.wikipedia.org/wiki/Domain-specific_language) (domain specific language) for describing how to orchestrate the flow of data between systems. PipeScript&reg; is brought to you by the people at Actio Pty Ltd. We believe in an open and accessible evolution of this DSL and welcome your feedback. [DataPipes](https://github.com/ActioPtyLtd/datapipes-examples) is the official interpreter of PipeScript&reg; written in Scala and runs on the JVM, allowing for it to be deployed on Windows, Linux and macOS systems. 
 
@@ -11,6 +11,14 @@ A very typical need that businesses have in today's modern data architecture is 
 ![architecture](images/arch.png)
 
 One of the objectives of the implementor of PipeScript&reg; is for the application to be lightweight, cross-platform and easy to deploy. Robustness, security, monitoring and logging should be centre to core platform features.
+
+## v1 vs v2
+The main differences between v1 and v2 are listed here:
+* Exposing pipelines as endpoints that can be triggered externally
+* Allowing for pipelines to be executed according to a schedule
+* A more mature concept of DOM and DOM operators
+* Additional core DataSet functions and distinction between core and userdefined functions
+* New definitions of tasks (Merge and Assert)
 
 ## Key Concepts
 
