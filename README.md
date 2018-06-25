@@ -265,7 +265,7 @@ The following BNF describes the supported syntax for tasks:
 ```BNF
 <task_section> ::= 'tasks { ' <tasks> ' }'
 <tasks> ::= <task> [<tasks>]
-<task> ::= <name> ' { type = "' <text> '"' [<key_values>] [<datasource_section>] '}'
+<task> ::= <name> ' { type = "' <text> '"' [onError = exit] [<key_values>] [<datasource_section>] '}'
 ```
 
 The following Task types supported are explained below:
@@ -274,6 +274,8 @@ The following Task types supported are explained below:
 * Assert - validate the data
 * Load - create data in a DataSource
 * Merge - create or update a DataSource using a key
+
+Note: By adding the onError definition, the running process will return an error code (1) if an exception is detected within the task.
 
 
 ### Task Extract
